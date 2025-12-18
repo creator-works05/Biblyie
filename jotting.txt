@@ -1,0 +1,13 @@
+181225 1149am  # BASIC LOGIN CREATED
+.>> CREATE SIGN UP PAGE (BASIC)
+-||- collection.json created
+
+----------------------------------------------------------------------------
+workflow
+
+*landing PAGE
+|_________
+        |-->login PAGE
+            |____
+                |--->sign up PAGE
+-----------------------------------------------------------------------------

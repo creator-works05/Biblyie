@@ -1,0 +1,24 @@
+PROJECT NAME :----------------
+DATE OF COMMENCEMENT : 17 Dec 2025
+PROJECT PATH: C:\Users\Amal\Desktop\lrnprgrm\MY_PROJECTX\project-task\javascriptExclv\myworks01
+DATE OF SUBMISSION : ----------------------------
+
+
+Requirement (Basic)
+
+Create an E-commerce website using JAVASCRIPT,
+
+    #. Admin Page
+    #. User Page
+
+
+Requirement (Enhanced)
+
+----------------------------- ----
+
+------------------------- ------
+
+Requirement (advanced)
+
+---------------------------------------- ---------
+------------------------------------------ -----
