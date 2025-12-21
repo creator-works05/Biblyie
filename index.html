@@ -1,11 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <h1>Hello this is <i>index.html</i> </h1>
+    <header> <!---header section-->
+        <div id="header-grid">
+            <div id="header-nav">
+                <img src="" alt="Biblyie Logo is here">
+                <section id="search-section">
+                    <input type="search" name="searchBar" id="header-search" placeholder="Find the books books for you">
+                    <button>lense</button>
+                </section>
+
+            </div>
+        </div>
+    </header>
+    <!-- MAIN SECTION STARTS HERE--------------------------------------------------------------------------->
+    <main>
+        <div id="highlight-grid">
+            <div id="highlight-head">
+
+            </div>
+            <!-- ----------------------------------------------HIGHLIGHT AND QUOTES------------- -->
+            <div id="highlight-banner">
+                <div id="highlight-read">
+                    <div id="slides-grid">
+                        <div class="highlight-slide">
+                        
+                                <div class="highlight-img-frame"></div>
+                            
+                        </div>
+                        <div class="highlight-slide">
+                            <div class="highlight-img-frame">welcome to </div>
+                        </div>
+                        <div class="highlight-slide">
+                            <div class="highlight-img-frame">read</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="top-quotes"></div>
+
+            </div>
+
+        </div>
+    </main>
+    <!-----------------------------------------FOR SCRIPT---------------------------------------------------------------- -->
+    <script>
+        // -------------------------------------------------AUTO SCROLL SETTING FOR BANNER----------------------
+        const highlightBanner = document.querySelector("#highlight-read");
+        const hBWidth = highlightBanner.clientWidth;
+        let index = 0;
+        setInterval(() => {
+            index++;
+            highlightBanner.scrollTo({
+                left: index * hBWidth,
+                behavior: "smooth"
+            });
+            if (index >= highlightBanner.scrollWidth / hBWidth - 1) {
+                index = -1;
+            }
+
+        }, 2500);
+        // ------------------------------------------------------------====--------------
+    </script>
+
 </body>
+
+
 </html>

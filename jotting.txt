@@ -7,7 +7,8 @@ workflow
 
 *landing PAGE
 |_________
-        |-->login PAGE
+        |-->login PAGE                              }----------------------------------->(F1,5-13)
             |____
                 |--->sign up PAGE
 -----------------------------------------------------------------------------
+project topic is finalized.Biblyie a online Books selling platform.

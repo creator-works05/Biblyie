@@ -13,7 +13,7 @@
             placeholder="Username"><br><br>
         <label for="form-eml">Email :</label> <input id="form-eml" type="text" name="email"
             placeholder=" Email"><br><br>
-        <label for="form-pass">Password :</label> <input id="form-pass" type="text" name="password"
+        <label for="form-pass">Password :</label> <input id="form-pass" type="email" name="password"
             placeholder="Password"><br><br>
         <label for="form-cpass">Confirm password :</label> <input id="form-cpass" type="text" name="cpassword"
             placeholder="Confirm password"><br><br>
@@ -59,24 +59,18 @@
                     throw new Error("Your login request error, details posting isn't succeeded")
                 }
 
-                
-                setTimeout(()=> {
+
+                setTimeout(() => {
                     window.location.href = "./index.html";
                     console.log("checking")
                     console.log("redirection to index.html succeeded ");
 
-                });
+                },0);
                 signUp.reset();
-
-                
-                
-                    
-                
-
             }
             catch (error) {
                 console.log("error :", error.message);
-                
+
             }
 
 
