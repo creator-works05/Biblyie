@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #add-image-form input{
+            width:800px;
+            height: 30px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        adding  Images into HIGHLIGHT BANNER READ
+    </h1>
+    <form id="add-image-form">
+        <label>Image: 
+            <input type="text" placeholder="provide image absolute path" name="imageLink">
+        </label>
+            
+        <button>Add</button>
+    </form>
+    <script>
+        let addImageForm = document.querySelector("#add-image-form");
+        console.log(addImageForm)
+        
+        addImageForm.addEventListener("submit",async (e)=>{
+            e.preventDefault();
+            let imageLink = e.target.imageLink.value.trim();
+            console.log(imageLink);
+            let imgLinkHolder ={
+                thisLink :`${imageLink}`
+            };
+            await fetch("http://localhost:3000/imageLink",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(imgLinkHolder)
+            })
+            addImageForm.submit();
+
+        });
+    </script>
+</body>
+</html>

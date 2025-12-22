@@ -79,7 +79,7 @@ body {
     
     grid-auto-columns:100%;
     height:100%;
-    
+   
 }
 .highlight-slide{
     display: flex;
@@ -90,13 +90,39 @@ body {
     scroll-snap-stop: always;
     align-items: center;
     justify-content: center;
+    
+    position: relative;
+    z-index: 0;
 }
+.highlight-slide::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    background-image: url("./Components/ImageSection/Background-img/backgroundforbanner-BkSlf.png");
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+.highlight-slide > *{
+    position: relative;
+    z-index: 1;
+}
+
 .highlight-img-frame{
     background-color:white;
     height:96%;
     aspect-ratio: 16/9;
+    overflow: hidden;
     
 
+
+}
+.read-img{
+    object-position: center;
+    object-fit: center;
+    
+    
 
 }
 /* ------------------------------------------------------------===-------------------------------------------------- */
