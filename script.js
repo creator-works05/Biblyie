@@ -1,0 +1,79 @@
+//INDEXpage scripts---------------------------------------------------------------------------
+// -------------------------------------------------AUTO SCROLL SETTING FOR BANNER----------------------
+const highlightRead = document.querySelector("#highlight-read");
+const hReadWidth = highlightRead.clientWidth;
+let index = 0;
+setInterval(() => {
+    index++;
+    highlightRead.scrollTo({
+        left: index * hReadWidth,
+        behavior: "smooth"
+    });
+    if (index >= highlightRead.scrollWidth / hReadWidth - 1) {
+        index = -1;
+    }
+
+}, 2500);
+// ------------------------------------------------------------====--------------
+// --------------------------------------------GETTING IMAGES FOR READ BANNER ---------------------------
+async function getImage() {
+
+    let response = await fetch("http://localhost:3000/imageLink");
+    let fetchedResource = await response.json();
+    let slidesGrid = document.querySelector("#slides-grid");
+    let highlightImgFrame = document.querySelector(".highlight-img-frame")
+    console.log(highlightImgFrame);
+    const frameHeight = highlightImgFrame.clientHeight;
+    const frameWidth = highlightImgFrame.clientWidth;
+    console.log(frameHeight);
+    fetchedResource.forEach((imgLink, i) => {
+
+        slidesGrid.innerHTML += ` <div class="highlight-slide">
+                                            <div class="highlight-img-frame">
+                                                <img height=${frameHeight} width=${frameWidth} class="read-img" src="${imgLink.thisLink}" title="${i}th image" alt="Book image">
+                                            </div>
+                                        </div>`;
+
+        // console.log(imgLink.thisLink);
+
+
+    });
+
+}
+getImage();
+// -------------------------------------------GET QUOTES-------------------------------------------
+
+//quote container height
+if (true) {
+
+    let topQuotes = document.querySelector("#top-quotes");
+    let topQuotesHeight = topQuotes.clientHeight;
+    let topQuotesWidth = topQuotes.clientWidth;
+    let quotesGridFrame = document.querySelector("#quotes-grid-frame");
+    quotesGridFrame.style.gridAutoColumns = `${topQuotesWidth}px`;
+    console.log(topQuotesWidth);
+
+
+    async function getQuotes() {
+
+        let response = await fetch("http://localhost:3000/quotes");
+        let fetchedResource = await response.json();
+        console.log("--------", fetchedResource, "-----------")
+        fetchedResource.forEach((qts, index) => {
+            let thisQuote = qts.thisQuote;
+            let thisInfo = qts.thisInfo;
+            console.log(thisQuote, thisInfo);
+            quotesGridFrame.innerHTML += `<div class="quote-content-frame">
+                            <p>${thisQuote}<br><span class="quote-info-edit">${thisInfo}</span></p>
+                        </div> `;
+        })
+
+
+    }
+
+
+    getQuotes();
+}
+
+
+

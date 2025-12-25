@@ -10,6 +10,13 @@
             height: 30px;
             padding-right: 20px;
         }
+        #add-quote-form  #quote-info{
+            width:800px;
+            height: 30px;
+            padding-right: 20px;
+        }
+        
+       
     </style>
 </head>
 <body>
@@ -23,6 +30,24 @@
             
         <button>Add</button>
     </form>
+    <h1>
+        adding  Quotes into Quote section 
+    </h1>
+    <form id="add-quote-form">
+        <label>Quote: 
+            <textarea name="quote" id="add-quote" maxlength="300"></textarea>
+        </label>
+        <br><br>
+        <label>Said by or info: 
+            <input id="quote-info" type="text" placeholder="provide info about the quote (if any)" name="quoteinfo">
+        </label>
+            
+        <button>Add quote</button>
+    </form>
+    
+    
+    
+    
     <script>
         let addImageForm = document.querySelector("#add-image-form");
         console.log(addImageForm)
@@ -42,6 +67,26 @@
             addImageForm.submit();
 
         });
+        let addQuoteForm= document.querySelector("#add-quote-form");
+        addQuoteForm.addEventListener("submit",async (e)=>{
+            e.preventDefault();
+            let  quoteInput= e.target.quote.value.trim();
+            let  quoteInfo= e.target.quoteinfo.value.trim();
+            console.log(quoteInput);
+            
+            let quoteHolder ={
+                thisQuote :`${quoteInput}`,
+                thisInfo:`${quoteInfo}`
+            };
+            await fetch("http://localhost:3000/quotes",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify(quoteHolder)
+            })
+            addQuoteForm.submit();
+
+        });
+        
     </script>
 </body>
 </html>

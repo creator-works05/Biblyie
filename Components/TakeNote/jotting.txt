@@ -12,3 +12,53 @@ workflow
                 |--->sign up PAGE
 -----------------------------------------------------------------------------
 project topic is finalized.Biblyie a online Books selling platform.
+
+
+
+{
+    "users":[
+        {
+            "name":"abc"
+            "age"30
+        },
+        {
+            "name":"abc"
+            "age"30
+        },
+        {
+            "name":"cbd"
+            "age"32
+        },
+        {
+            "name":"efg"
+            "age"30
+        },
+        {
+            "name":"gij"
+            "age"34
+        },
+    ]
+}
+
+
+problem:
+=+======++=====++=+============++=========++========++++====
+/*  */
+#quotes-grid-frame{
+    display: grid;
+    width: fit-content;
+    background-color: rgb(54, 14, 2);
+    /* background-color: transparent; */
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+
+}
+.quote-content-frame{
+    display: flex;
+    width: 500px;
+    height: 38vh ;
+    text-align: center;
+    font-size: 1.2rem;
+    color:rgb(119, 0, 0);
+    
+}

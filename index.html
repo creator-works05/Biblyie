@@ -9,6 +9,8 @@
 </head>
 
 <body>
+
+    <!-- -------------------------------------------------------------HTML--------------------- -->
     <header> <!---header section-->
         <div id="header-grid">
             <div id="header-nav">
@@ -32,67 +34,34 @@
                 <div id="highlight-read">
                     <div id="slides-grid">
                         <div class="highlight-slide">
-                        
-                                <div class="highlight-img-frame"></div>
-                            
+
+                            <div class="highlight-img-frame"></div>
+
                         </div>
-                        
+
 
                     </div>
                 </div>
-                <div id="top-quotes"></div>
+                <div id="top-quotes">
+                    <div id="quotes-grid-frame">
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
+        <!-- ------------------------------------------------------------END OF BANNER SECTION------------------- -->
+         
+         
     </main>
-    
-    
-    
+
+
+
     <!-----------------------------------------FOR SCRIPT---------------------------------------------------------------- -->
-    <script>
-        // -------------------------------------------------AUTO SCROLL SETTING FOR BANNER----------------------
-        const highlightRead = document.querySelector("#highlight-read");
-        const hReadWidth = highlightRead.clientWidth;
-        let index = 0;
-        setInterval(() => {
-            index++;
-            highlightRead.scrollTo({
-                left: index * hReadWidth,
-                behavior: "smooth"
-            });
-            if (index >= highlightRead.scrollWidth / hReadWidth - 1) {
-                index = -1;
-            }
-
-        }, 2500);
-        // ------------------------------------------------------------====--------------
-        // --------------------------------------------GETTING IMAGES FOR READ BANNER ---------------------------
-        async function getImage(){
-            
-            let response= await fetch("http://localhost:3000/imageLink") ;
-            let fetchedResource = await response.json();
-            let slidesGrid =document.querySelector("#slides-grid");
-            let highlightImgFrame=document.querySelector(".highlight-img-frame")
-            console.log(highlightImgFrame);
-            const frameHeight=highlightImgFrame.clientHeight;
-            const frameWidth=highlightImgFrame.clientWidth;
-            console.log(frameHeight);
-            fetchedResource.forEach((imgLink,i)=>{
-
-                slidesGrid.innerHTML+=` <div class="highlight-slide">
-                                            <div class="highlight-img-frame">
-                                                <img height=${frameHeight} width=${frameWidth} class="read-img" src="${imgLink.thisLink}" title="${i}th image" alt="Book image">
-                                            </div>
-                                        </div>`;
-                console.log(imgLink.thisLink);
-
-            });
-            
-        }
-        getImage();
-    </script>
-
+    
+    <script src="script.js"></script>
 </body>
 
 

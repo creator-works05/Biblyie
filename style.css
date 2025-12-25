@@ -1,8 +1,14 @@
 :root {
-    --nav-color: red;--see1:yellow;--see2:blueviolet;
-    font-size: 100%;
-    --margin-between: 0.4rem;
+    --nav-color: red;
+    --see1: yellow;
+    --see2: blueviolet;
+    --text-shadow-pre:rgb(11, 11, 200);
 
+    font-size: 100%;
+    /* -----------MARGIN--------------------------------- */
+    --margin-between: 0.4rem;
+    /* ---------OUTLINE color--------------- */
+    --hread-img-oline: black;
 }
 
 body {
@@ -38,50 +44,55 @@ body {
     background-color: var(--see2);
     margin-top: var(--margin-between);
     grid-template-columns: 4.5vw 91vw 4.5vw;
-    grid-template-rows:auto 95%;
+    grid-template-rows: auto 95%;
     grid-template-areas: ". top ."
-                        ". bottom .";
+        ". bottom .";
 }
-#highlight-banner{
-    display:flex;
+
+#highlight-banner {
+    display: flex;
     width: 100%;
     height: 100%;
     grid-area: bottom;
     border: 2px solid yellow;
-    
+    gap: var(--margin-between);
+
 
 
 }
+
 /* ----------------------------------------------------HIGHLIGHTS FOR READERS--------------------------------- */
-#highlight-read{
-    display:flex;
-    flex:1.2 1 auto;
-    width:60%;
-    height:100%;
+#highlight-read {
+    display: flex;
+    flex: 1.2 1 auto;
+    width: 60%;
+    height: 100%;
     background-color: burlywood;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-y: hidden;
     overflow-x: auto;
-    scroll-snap-type:x mandatory;
-    scrollbar-color:transparent transparent;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: transparent transparent;
     scrollbar-width: none;
 }
-#highlight-read::-webkit-scrollbar{
+
+#highlight-read::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
 
-#slides-grid{
-    display:grid;
+#slides-grid {
+    display: grid;
     width: 100%;
-    grid-auto-flow:column;
-    
-    grid-auto-columns:100%;
-    height:100%;
-   
+    grid-auto-flow: column;
+
+    grid-auto-columns: 100%;
+    height: 100%;
+
 }
-.highlight-slide{
+
+.highlight-slide {
     display: flex;
     background-color: green;
     width: 100%;
@@ -90,47 +101,95 @@ body {
     scroll-snap-stop: always;
     align-items: center;
     justify-content: center;
-    
+
     position: relative;
     z-index: 0;
 }
-.highlight-slide::before{
-    content:"";
-    position:absolute;
+
+.highlight-slide::before {
+    content: "";
+    position: absolute;
     inset: 0;
     background-image: url("./Components/ImageSection/Background-img/backgroundforbanner-BkSlf.png");
-    background-position:center;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
+    filter: blur(1.5px);
 }
-.highlight-slide > *{
+
+.highlight-slide>* {
     position: relative;
     z-index: 1;
 }
 
-.highlight-img-frame{
-    background-color:white;
-    height:96%;
+.highlight-img-frame {
+    background-color: white;
+    height: 96%;
     aspect-ratio: 16/9;
     overflow: hidden;
-    
+    outline: 2px solid var(--hread-img-oline);
+
 
 
 }
-.read-img{
+
+.read-img {
     object-position: center;
     object-fit: center;
-    
-    
+
+
 
 }
+
 /* ------------------------------------------------------------===-------------------------------------------------- */
-#top-quotes{
+#top-quotes {
 
     display: flex;
     flex: 1 1.2 auto;
-    width:40%;
+    width: 40%;
     background-color: aliceblue;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+
+}
+
+#quotes-grid-frame {
+    display: grid;
+    grid-auto-flow: column;
+
+
+    /* grid-auto-columns: 100%; */
+    /* outline: 3px solid black ; */
+    /* background-color: yellow; */
+    height: 100%;
+}
+
+.quote-content-frame {
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    /* background-color: wheat; */
+    /* outline: 3px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-stop: always;
+    text-align:center;
+    text-shadow: 8px 8px 20px var(--text-shadow-pre);
+    font-size: 1.6rem;
     
+}
+
+/* quote span class */
+.quote-info-edit{
+    color: red;
+    text-transform: capitalize;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-shadow: none;
 }
