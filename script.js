@@ -75,5 +75,27 @@ if (true) {
     getQuotes();
 }
 
+window.addEventListener("resize",()=>{
+    let topQuotes = document.querySelector("#top-quotes");
+    let topQuotesWidth = topQuotes.clientWidth;
+    let quotesGridFrame = document.querySelector("#quotes-grid-frame");
+    quotesGridFrame.style.gridAutoColumns = `${topQuotesWidth}px`;
 
+    // ----------------------------FOR HIGHLIGHT BANNER READ-----------------------------------------
+    let highlightImgFrame = document.querySelector(".highlight-img-frame");
+    const frameHeight = highlightImgFrame.clientHeight;
+    const frameWidth = highlightImgFrame.clientWidth;
+    let readImg=document.querySelector(".read-img");
+    
+    readImg.style.width=`${frameWidth}px`; 
+    readImg.style.height=`${frameHeight}px`; 
+    
+    
+})
+
+// ---------------------------------------------BOOK RECOMMENDATION SHELVING--------------------
+async function recommendBooks() {
+    
+    
+}
 

@@ -62,3 +62,17 @@ problem:
     color:rgb(119, 0, 0);
     
 }
+
+--------------------------------
+BOOK RECOMMENDATION FIELDS 
+        -----
+        TITLE:
+        IMAGE:
+        CURRENT-PRICE:
+        ACTUAL-PRICE:
+        HashTag:
+        Details:
+        OPTION:buy orpion add cart OPTION
+        BooKid
+        
+        
