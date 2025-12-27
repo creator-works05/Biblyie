@@ -74,5 +74,23 @@ BOOK RECOMMENDATION FIELDS
         Details:
         OPTION:buy orpion add cart OPTION
         BooKid
+        percentage
+        stockstatus
+        stockcount
         
         
+
+        ===============================================================
+        HOW WE MADE ID EFFECTIVELY
+         const addSuffixTime=Date.now();
+                console.log(addSuffixTime);
+                const lastFive= addSuffixTime % 100000 ;
+                console.log(lastFive);
+                const nameString=title.replace(/\s+/g,"");
+                const namePart=nameString.slice(0,5)
+                console.log(namePart);
+                const revLast=nameString.split("").reverse().join("").slice(0,3);
+                console.log(revLast);
+                const id=namePart+revLast+lastFive; // THIS IS THE ID WE WANT
+                console.log(id);
+        ==================================================================

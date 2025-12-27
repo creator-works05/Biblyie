@@ -1,92 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #add-image-form input{
-            width:800px;
+        #add-image-form input {
+            width: 800px;
             height: 30px;
             padding-right: 20px;
         }
-        #add-quote-form  #quote-info{
-            width:800px;
+
+        #add-quote-form #quote-info {
+            width: 800px;
             height: 30px;
             padding-right: 20px;
         }
-        
-       
+
+        #add-recommendation-books input {
+            width: 800px;
+            height: 30px;
+            padding-right: 20px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+
+        #add-recommendation-books button {
+
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
     </style>
 </head>
+
 <body>
     <h1>
-        adding  Images into HIGHLIGHT BANNER READ
+        adding Images into HIGHLIGHT BANNER READ
     </h1>
     <form id="add-image-form">
-        <label>Image: 
+        <label>Image:
             <input type="text" placeholder="provide image absolute path" name="imageLink">
         </label>
-            
+
         <button>Add</button>
     </form>
     <h1>
-        adding  Quotes into Quote section 
+        adding Quotes into Quote section
     </h1>
     <form id="add-quote-form">
-        <label>Quote: 
+        <label>Quote: <br>
             <textarea name="quote" id="add-quote" maxlength="300"></textarea>
         </label>
         <br><br>
-        <label>Said by or info: 
+        <label>Said by or info:
             <input id="quote-info" type="text" placeholder="provide info about the quote (if any)" name="quoteinfo">
         </label>
-            
+
         <button>Add quote</button>
     </form>
-    
-    
-    
-    
+    <h1>Adding books for recommendation section </h1>
+    <form id="add-recommendation-books">
+
+        <label>Image url:
+            <input id="rec-book-image" type="text" placeholder="provide image url or absolute path" name="imageurl">
+        </label><br>
+        <label>Title:
+            <input id="rec-book-title" type="text" placeholder="provide book title" name="title">
+        </label><br><br>
+        <label>Book Details:
+            <textarea id="rec-book-details" maxlength="300" placeholder="provide description" name="details"></textarea>
+        </label><br><br>
+        <label>Price:
+            <input id="rec-book-price" type="number" placeholder="provide actual price" name="actualprice">
+        </label><br><br>
+        <label>Current price:
+            <input id="rec-book-currentprice" type="number" placeholder="provide current price" name="currentprice">
+        </label><br><br>
+        <label>Stock count:
+            <input id="rec-book-stockcount" type="number" placeholder="provide stock count" name="stockcount">
+        </label><br><br>
+        <label>Book hashtag:
+            <select id="rec-book-hashtag" placeholder="Choose right tag#" name="hashtag" name="hashtag">
+                <option value="#FICTION">#FICTION</option>
+                <option value="#NON-FICTION">#NON-FICTION</option>
+            </select>
+        </label>
+        <label>Book sub hashtag:
+            <select id="rec-book-subtag" placeholder=" Choose right Sub tag#" name="subtag" name="subhashtag">
+                <option value="#novel">#novel</option>
+            </select>
+        </label>
+        <label>Book sub hashtag:
+            <input type="radio" name="homeAdd" value="yes" checked>
+            <input type="radio" name="homeAdd" value="no">
+        </label>
+        <br><br>
+
+        <button>Add quote</button>
+    </form>
+
+
+
+
+
     <script>
         let addImageForm = document.querySelector("#add-image-form");
         console.log(addImageForm)
-        
-        addImageForm.addEventListener("submit",async (e)=>{
+
+
+        addImageForm.addEventListener("submit", async (e) => {
             e.preventDefault();
             let imageLink = e.target.imageLink.value.trim();
             console.log(imageLink);
-            let imgLinkHolder ={
-                thisLink :`${imageLink}`
+            let imgLinkHolder = {
+                thisLink: `${imageLink}`
             };
-            await fetch("http://localhost:3000/imageLink",{
-                method:"POST",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify(imgLinkHolder)
+            await fetch("http://localhost:3000/imageLink", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(imgLinkHolder)
             })
             addImageForm.submit();
 
         });
-        let addQuoteForm= document.querySelector("#add-quote-form");
-        addQuoteForm.addEventListener("submit",async (e)=>{
+        // -------------------------------ADDING QUOTES ------------------------------------------------------------
+        let addQuoteForm = document.querySelector("#add-quote-form");
+        addQuoteForm.addEventListener("submit", async (e) => {
             e.preventDefault();
-            let  quoteInput= e.target.quote.value.trim();
-            let  quoteInfo= e.target.quoteinfo.value.trim();
+            let quoteInput = e.target.quote.value.trim();
+            let quoteInfo = e.target.quoteinfo.value.trim();
             console.log(quoteInput);
-            
-            let quoteHolder ={
-                thisQuote :`${quoteInput}`,
-                thisInfo:`${quoteInfo}`
+
+            let quoteHolder = {
+                thisQuote: `${quoteInput}`,
+                thisInfo: `${quoteInfo}`
             };
-            await fetch("http://localhost:3000/quotes",{
-                method:"POST",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify(quoteHolder)
+            await fetch("http://localhost:3000/quotes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(quoteHolder)
             })
             addQuoteForm.submit();
 
         });
-        
+        // -------------------------------------------------------ADD BOOKS IN RECOMMENDATION SECTION--------------
+        if (true) {
+            const addRecommendation = document.querySelector("#add-recommendation-books");
+            addRecommendation.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                let imageurl = e.target.imageurl.value;
+                let title = e.target.title.value;
+                let details = e.target.details.value;
+                let actualprice = e.target.actualprice.value;
+                let currentprice = e.target.currentprice.value;
+                let stockcount = e.target.stockcount.value;
+                let hashtag = e.target.hashtag.value;
+                let subtag = e.target.subtag.value;
+                let homeAdd = e.target.homeAdd.value;
+                let addSuffixTime = Date.now();
+                let lastFive = addSuffixTime % 100000;
+                let nameString = title.replace(/\s+/g, "");
+                let namePart = nameString.slice(0, 5)
+                let revLast = nameString.split("").reverse().join("").slice(0, 3);
+                let id = namePart + revLast + lastFive; // THIS IS THE ID WE WANT
+                let wholeTag = hashtag + subtag;
+                if (!imageurl) {
+                    const num = Math.random() * 10;
+                    if (num < 2) {
+                        imageurl = "Components/ImageSection/BookShelf/altimage7.png"
+                    }
+                    else if (num < 3) {
+                        imageurl = "Components/ImageSection/BookShelf/altimage6.png"
+                    }
+                    else if (num < 4) {
+                        imageurl = "Components/ImageSection/BookShelf/altimage5.png"
+                    }
+                    else if (num < 5) {
+                        imageurl = "Components/ImageSection/BookShelf/altimage4.png"
+                    }
+                    else if (num < 6) {
+                        imageurl = "Components/ImageSection/BookShelf/altimage3.png"
+                    }
+                    else if (num < 7) {
+                        imageurl = "Components/ImageSection/BookShelf/altimage2.png"
+                    }
+                    else {
+                        imageurl = "Components/ImageSection/BookShelf/altimage.png"
+                    }
+
+
+                }
+                if (!title || title.length < 2) {
+                    console.log("Book title is required,more than two character required")
+                    return;
+                }
+                if (!stockcount || !details || !hashtag || !subtag) {
+
+                    let num = Math.random() * 10;
+                    if (!hashtag || !subtag) {
+                        wholeTag = "#OTHER#no-category";
+                    }
+
+
+                    if (!details) {
+
+                        details = "This book ....... Make your order now";
+                    }
+
+                    if (num < 3) {
+
+                        if (!stockcount) { stockcount = 12; }
+
+                    }
+                    else if (num < 6) {
+
+                        if (!stockcount) { stockcount = 10; }
+
+                    }
+                    else {
+
+                        if (!stockcount) { stockcount = 55; }
+                    }
+                }
+                if(!actualprice && currentprice){
+                    actualprice=currentprice;
+                }
+                if (!actualprice) {
+                    let makeprice = Date.now();
+                    let randomPick = parseInt(Math.random() * 10);
+                    switch (randomPick) {
+                        case 1: actualprice = parseInt(Math.random() * 90 + 10);
+                            currentprice = actualprice - 50;
+                            break;
+                        case 1: actualprice = parseInt(Math.random() * 100 + 10);
+                            currentprice = actualprice - 20;
+                            break;
+                        case 1: actualprice = parseInt(Math.random() * 1000 + 10);
+                            currentprice = actualprice - 80;
+                            break;
+                        case 1: actualprice = parseInt(Math.random() * 763 + 10);
+                            currentprice = actualprice - 50;
+                            break;
+                        case 1: actualprice = parseInt(Math.random() * 234 + 10);
+                            currentprice = actualprice - 17;
+                            break;
+                        case 1: actualprice = parseInt(Math.random() * 150 + 13);
+                            currentprice = actualprice - 50;
+                            break;
+                        case 1: actualprice = parseInt(Math.random() * 99 + 80);
+                            currentprice = actualprice - 120;
+                            break;
+                        default: actualprice = parseInt(Math.random() * 5550 + 10);
+                            currentprice = actualprice - 40;
+
+
+
+                    }
+                    if (actualprice < 90) {
+                        actualprice = 320;
+                        currentprice = 312;
+                    }
+                }
+
+                let rcndBook = {
+                    id,
+                    imageurl,
+                    title,
+                    details,
+                    actualprice,
+                    currentprice,
+                    stockcount,
+                    wholeTag,
+                    homeView: homeAdd
+
+
+                };
+                await fetch(`http://localhost:3000/bookRcmndd`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(rcndBook)
+                });
+                await fetch(`http://localhost:3000/RcmndBookIDnTag`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id: id,
+                        wholeTag: wholeTag
+                    })
+                });
+
+                e.target.reset();
+            });
+        }
+
+
     </script>
 </body>
+
 </html>
