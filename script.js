@@ -75,7 +75,7 @@ if (true) {
     getQuotes();
 }
 
-window.addEventListener("resize",()=>{
+window.addEventListener("resize", () => {
     let topQuotes = document.querySelector("#top-quotes");
     let topQuotesWidth = topQuotes.clientWidth;
     let quotesGridFrame = document.querySelector("#quotes-grid-frame");
@@ -85,17 +85,56 @@ window.addEventListener("resize",()=>{
     let highlightImgFrame = document.querySelector(".highlight-img-frame");
     const frameHeight = highlightImgFrame.clientHeight;
     const frameWidth = highlightImgFrame.clientWidth;
-    let readImg=document.querySelector(".read-img");
-    
-    readImg.style.width=`${frameWidth}px`; 
-    readImg.style.height=`${frameHeight}px`; 
-    
-    
+    let readImg = document.querySelector(".read-img");
+
+    readImg.style.width = `${frameWidth}px`;
+    readImg.style.height = `${frameHeight}px`;
+
+
 })
 
 // ---------------------------------------------BOOK RECOMMENDATION SHELVING--------------------
-async function recommendBooks() {
+if (true) {
+
+    let flag = 5;
+    let parentDiv = document.querySelector("#books-recommended");
+    async function recommendBooks() {
+        let response = await fetch(`http://localhost:3000/bookRcmndd`);
+        let fetched = await response.json();
+        console.log("success", flag);
+        console.log(fetched.length)
+        if (flag >= fetched.length) {
+            console.log("flag greater more option collapsed")
+            document.querySelector("#more-books-recommend").style.display= "none";
+            flag = fetched.length;
+            console.log("no button")
+        }
+        for (let i = 0; i < flag; i++) {
+            let obj = fetched[i];
+            let check = obj.homeView;
+            if (check == 'yes') {
+                parentDiv.innerHTML += ` <button class="recommend-button">
+                        <div class="recommend-list"> 
+                        <img alt="Book image" class="recommend-image" src="${obj.imageurl}">
+                        <p class="recommend-img-title">${obj.title}</p>
+                        <p class="description-for-rcmmnd">${obj.details}</p>
+                        <p class="recommend-click-id">${obj.id} </p>
+                        
+                    </div>
+                    </button>`
+
+            }
+
+
+
+        }
+    }
+    recommendBooks();
     
-    
+    document.querySelector("#more-books-recommend").addEventListener("click", () => {
+        flag += 5;
+        parentDiv.innerHTML = "";
+        recommendBooks();
+    })
 }
 

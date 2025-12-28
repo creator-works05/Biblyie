@@ -23,7 +23,7 @@
             height: 30px;
             padding-right: 20px;
             margin-bottom: 20px;
-            margin-left: 50px;
+            margin-left: 50px; 
         }
 
         #add-recommendation-books button {
@@ -31,6 +31,18 @@
             margin-bottom: 20px;
             margin-left: 50px;
         }
+         #add-recommendation-books .homeadd {
+            width:auto ;
+            height:auto;
+            padding-right: 0;
+            margin-bottom: 20px;
+            margin-left: 0; 
+
+         }
+         #add-wholetag input{
+            height: 100px;
+            width: 400px;
+         }
     </style>
 </head>
 
@@ -91,15 +103,22 @@
                 <option value="#novel">#novel</option>
             </select>
         </label>
-        <label>Book sub hashtag:
-            <input type="radio" name="homeAdd" value="yes" checked>
-            <input type="radio" name="homeAdd" value="no">
+        <br><br>
+        <label>Place book in home :
+            <input type="radio" class="homeadd" name="homeAdd" value="yes" checked>
+            <input type="radio" class="homeadd" name="homeAdd" value="no">
         </label>
         <br><br>
 
         <button>Add quote</button>
     </form>
-
+        
+    <!-- --------------------------------------------------------------------ADD TAG FORM------------- -->
+     <form id="add-wholetag">
+        <input type="text" name="mainTag"  pattern="[A-Z]+(-[A-Z]+)*" placeholder="Add main tag Use only hyphen and UPPER CASE alphabets" required><br><br>
+        <input type="text" name="subTag"  pattern="[a-z]+(-[a-z]+)*" placeholder="Add main tag Use only hyphen and lower case alphabets" required><br><br>
+        <button>Add Book Tag</button>
+     </form>
 
 
 
@@ -192,7 +211,7 @@
 
                 }
                 if (!title || title.length < 2) {
-                    console.log("Book title is required,more than two character required")
+                    alert("Book title is required,more than two character required")
                     return;
                 }
                 if (!stockcount || !details || !hashtag || !subtag) {
@@ -293,7 +312,27 @@
                 e.target.reset();
             });
         }
+        // --------------------------------------------------ADD TAG FORM-----------------------------
+        if(true){
+            let addWholeTag=document.querySelector("#add-wholetag");
+            addWholeTag.addEventListener("submit",async (e)=>{
+                e.preventDefault();
+                let mainTag=e.target.mainTag.value;
+                let subTag=e.target.subTag.value;
+                let madeComboTag="#"+mainTag+"#"+subTag;
+                console.log(madeComboTag);
+                let madeTag={
+                    comboTag:madeComboTag
+                }
+                await fetch(`http://localhost:3000/addedWholeTag`,{
+                    method:"POST",
+                    headers:{"Content-Type":"application/json"},
+                    body:JSON.stringify(madeTag)
+                })
 
+                // e.target.reset();
+            })
+        }
 
     </script>
 </body>

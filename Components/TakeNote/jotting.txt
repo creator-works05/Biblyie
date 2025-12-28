@@ -94,3 +94,11 @@ BOOK RECOMMENDATION FIELDS
                 const id=namePart+revLast+lastFive; // THIS IS THE ID WE WANT
                 console.log(id);
         ==================================================================
+
+        -----------------------------------------------------
+        cut portion
+        <img alt="image" id="recommend-image">
+                        <p id="recommend-img-title">hello</p>
+                        <p id="description-for-rcmmnd">desjhdjsdjsdfdfhdjhfdhfdfdhfhdfhdh</p>
+                        <p id="recommend-click-id">ID </p>
+                        -------------------------------------------------------

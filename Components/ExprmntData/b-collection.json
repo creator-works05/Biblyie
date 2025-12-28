@@ -53,9 +53,434 @@
     }
   ],
   "bookRcmndd": [
-   
+    {
+      "id": "pathuuda50340",
+      "imageurl": "Components/ImageSection/BookShelf/altimage6.png",
+      "title": "pathummayude aadu",
+      "details": "This book ....... Make your order now",
+      "actualprice": 1088,
+      "currentprice": 1048,
+      "stockcount": 12,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "balyaihk77052",
+      "imageurl": "Components/ImageSection/BookShelf/altimage3.png",
+      "title": "balyakaala sakhi",
+      "details": "This book ....... Make your order now",
+      "actualprice": 1220,
+      "currentprice": 1180,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "Eleveset59735",
+      "imageurl": "Components/ImageSection/BookShelf/altimage2.png",
+      "title": "Eleven minutes",
+      "details": "This book ....... Make your order now",
+      "actualprice": "233",
+      "currentprice": "233",
+      "stockcount": 12,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book11ko57131",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "book 1",
+      "details": "This book ....... Make your order now",
+      "actualprice": 5459,
+      "currentprice": 5419,
+      "stockcount": 10,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book22ko64689",
+      "imageurl": "Components/ImageSection/BookShelf/altimage4.png",
+      "title": "book 2",
+      "details": "This book ....... Make your order now",
+      "actualprice": 1531,
+      "currentprice": 1491,
+      "stockcount": 10,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book33ko70364",
+      "imageurl": "Components/ImageSection/BookShelf/altimage3.png",
+      "title": "book 3",
+      "details": "This book ....... Make your order now",
+      "actualprice": 867,
+      "currentprice": 827,
+      "stockcount": 10,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book44ko77422",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "book 4",
+      "details": "This book ....... Make your order now",
+      "actualprice": 972,
+      "currentprice": 932,
+      "stockcount": 12,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book55ko84790",
+      "imageurl": "Components/ImageSection/BookShelf/altimage5.png",
+      "title": "book 5",
+      "details": "This book ....... Make your order now",
+      "actualprice": 2300,
+      "currentprice": 2260,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book66ko89583",
+      "imageurl": "Components/ImageSection/BookShelf/altimage2.png",
+      "title": "book 6",
+      "details": "This book ....... Make your order now",
+      "actualprice": 5251,
+      "currentprice": 5211,
+      "stockcount": 12,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book88ko98535",
+      "imageurl": "Components/ImageSection/BookShelf/altimage6.png",
+      "title": "book 8",
+      "details": "This book ....... Make your order now",
+      "actualprice": 3898,
+      "currentprice": 3858,
+      "stockcount": 12,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book99ko5487",
+      "imageurl": "Components/ImageSection/BookShelf/altimage2.png",
+      "title": "book 9",
+      "details": "This book ....... Make your order now",
+      "actualprice": 5542,
+      "currentprice": 5502,
+      "stockcount": 10,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book101k15151",
+      "imageurl": "Components/ImageSection/BookShelf/altimage2.png",
+      "title": "book 10",
+      "details": "This book ....... Make your order now",
+      "actualprice": 801,
+      "currentprice": 761,
+      "stockcount": 10,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book111k23016",
+      "imageurl": "Components/ImageSection/BookShelf/altimage6.png",
+      "title": "book 11",
+      "details": "This book ....... Make your order now",
+      "actualprice": 4788,
+      "currentprice": 4748,
+      "stockcount": 10,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book131k40624",
+      "imageurl": "Components/ImageSection/BookShelf/altimage7.png",
+      "title": "book 13",
+      "details": "This book ....... Make your order now",
+      "actualprice": 5221,
+      "currentprice": 5181,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book141k48008",
+      "imageurl": "Components/ImageSection/BookShelf/altimage7.png",
+      "title": "book 14",
+      "details": "This book ....... Make your order now",
+      "actualprice": 1206,
+      "currentprice": 1166,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book151k55217",
+      "imageurl": "Components/ImageSection/BookShelf/altimage7.png",
+      "title": "book 15",
+      "details": "This book ....... Make your order now",
+      "actualprice": 5042,
+      "currentprice": 5002,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book171k62705",
+      "imageurl": "Components/ImageSection/BookShelf/altimage4.png",
+      "title": "book 17",
+      "details": "This book ....... Make your order now",
+      "actualprice": 1207,
+      "currentprice": 1167,
+      "stockcount": 12,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book181k69265",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "book 18",
+      "details": "This book ....... Make your order now",
+      "actualprice": 5172,
+      "currentprice": 5132,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    },
+    {
+      "id": "book191k77658",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "book 19",
+      "details": "This book ....... Make your order now",
+      "actualprice": 514,
+      "currentprice": 474,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#novel",
+      "homeView": "yes"
+    }
   ],
   "RcmndBookIDnTag": [
-    
+    {
+      "id": "pathuuda50340",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "balyaihk77052",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "Eleveset59735",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book11ko57131",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book22ko64689",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book33ko70364",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book44ko77422",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book55ko84790",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book66ko89583",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book88ko98535",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book99ko5487",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book101k15151",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book111k23016",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book131k40624",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book141k48008",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book151k55217",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book171k62705",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book181k69265",
+      "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "book191k77658",
+      "wholeTag": "#FICTION#novel"
+    }
+  ],
+  "addedWholeTag": [
+    {
+      "id": "2618",
+      "comboTag": "#FICTION#novel"
+    },
+    {
+      "id": "483e",
+      "comboTag": "#FICTION#short-stories"
+    },
+    {
+      "id": "08a3",
+      "comboTag": "#FICTION#fantasy"
+    },
+    {
+      "id": "e71c",
+      "comboTag": "#FICTION#science-fiction"
+    },
+    {
+      "id": "954b",
+      "comboTag": "#FICTION#mystery-or-thriller"
+    },
+    {
+      "id": "09db",
+      "comboTag": "#FICTION#romance"
+    },
+    {
+      "id": "4f5a",
+      "comboTag": "#FICTION#horror"
+    },
+    {
+      "id": "5c13",
+      "comboTag": "#FICTION#adventure"
+    },
+    {
+      "id": "2489",
+      "comboTag": "#FICTION#historical-fiction"
+    },
+    {
+      "id": "d41e",
+      "comboTag": "#NON-FICTION#biography-or-autobiography"
+    },
+    {
+      "id": "f961",
+      "comboTag": "#NON-FICTION#history"
+    },
+    {
+      "id": "7a83",
+      "comboTag": "#NON-FICTION#self-help"
+    },
+    {
+      "id": "d41e",
+      "comboTag": "#NON-FICTION#travel"
+    },
+    {
+      "id": "bc03",
+      "comboTag": "#NON-FICTION#essays"
+    },
+    {
+      "id": "7762",
+      "comboTag": "#NON-FICTION#memoirs"
+    },
+    {
+      "id": "4103",
+      "comboTag": "#NON-FICTION#journalism"
+    },
+    {
+      "id": "2c60",
+      "comboTag": "#ACADEMIC-EDUCATIONAL#text-books"
+    },
+    {
+      "id": "0076",
+      "comboTag": "#ACADEMIC-EDUCATIONAL#reference-books"
+    },
+    {
+      "id": "0158",
+      "comboTag": "#ACADEMIC-EDUCATIONAL#research-books"
+    },
+    {
+      "id": "f6ae",
+      "comboTag": "#ACADEMIC-EDUCATIONAL#exam-guides"
+    },
+    {
+      "id": "2a75",
+      "comboTag": "#PHILOSOPSHY-AND-RELIGION#philosophy"
+    },
+    {
+      "id": "8646",
+      "comboTag": "#PHILOSOPSHY-AND-RELIGION#psychology"
+    },
+    {
+      "id": "5ada",
+      "comboTag": "#PHILOSOPSHY-AND-RELIGION#religious-books"
+    },
+    {
+      "id": "6f62",
+      "comboTag": "#PROFESSIONAL-OR-TECHNICAL#engineering"
+    },
+    {
+      "id": "c980",
+      "comboTag": "#PROFESSIONAL-OR-TECHNICAL#medical"
+    },
+    {
+      "id": "1b3f",
+      "comboTag": "#PROFESSIONAL-OR-TECHNICAL#law"
+    },
+    {
+      "id": "1c03",
+      "comboTag": "#PROFESSIONAL-OR-TECHNICAL#computer-or-it"
+    },
+    {
+      "id": "dfac",
+      "comboTag": "#ARTS-OR-LITERATURE#poetry"
+    },
+    {
+      "id": "0343",
+      "comboTag": "#ARTS-OR-LITERATURE#drama-or-plays"
+    },
+    {
+      "id": "9b58",
+      "comboTag": "#ARTS-OR-LITERATURE#literary-criticism"
+    },
+    {
+      "id": "faee",
+      "comboTag": "#ARTS-OR-LITERATURE#art-and-music"
+    },
+    {
+      "id": "c83e",
+      "comboTag": "#CHILDREN-OR-KIDS#picture-books"
+    },
+    {
+      "id": "f070",
+      "comboTag": "#CHILDREN-OR-KIDS#fairy-tales"
+    },
+    {
+      "id": "ffbd",
+      "comboTag": "#CHILDREN-OR-KIDS#kids-fiction"
+    },
+    {
+      "id": "fbb6",
+      "comboTag": "#OTHER#cmcs-hlth-ftns-mgzns-ckbks-other"
+    }
   ]
 }

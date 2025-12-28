@@ -255,7 +255,7 @@ body {
 
 
 }
-#recommend-list{
+.recommend-list{
     display: grid;
     grid-template-rows: max-content min-content min-content min-content auto;
     grid-template-columns:100%;
@@ -269,7 +269,7 @@ body {
     justify-content: center;
     padding-top: 1.5px;
 }
-#books-recommended > #recommend-button{
+#books-recommended > .recommend-button{
     width: fit-content;
     background-color:transparent;
     margin: 0;
@@ -278,7 +278,7 @@ body {
 
 
 }
-#recommend-list > p{
+.recommend-list > p{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -291,7 +291,7 @@ body {
     
     
 }
-#recommend-img-title{
+.recommend-img-title{
     font-weight: 600;
     font-style: normal;
     text-decoration: underline;
@@ -299,7 +299,7 @@ body {
     text-decoration-thickness: 1px;
     padding-top: 1px;
 }
-#recommend-image{
+.recommend-image{
     outline: 1px solid blue;
     width: 90%;
     align-self: flex-start;
@@ -308,10 +308,10 @@ body {
     margin-top: 1px;
     margin-bottom: 1px;
 }
-#recommend-click-id{
+.recommend-click-id{
     visibility: visible;
 }
-#description-for-rcmmnd{
+.description-for-rcmmnd{
     font-style:italic;
     font-weight: 100;
     color:  rgba(0, 0, 0, 0.485);
@@ -319,7 +319,9 @@ body {
 
 #more-books-recommend{
     border-radius: 2px solid black;
-    width:max(120px,13vw);
-    height: max(160px,15vw);
+    /* width:max(120px,13vw);
+    height: max(160px,15vw); */
+    height: 10vh;
+    width: 100%;
 
 }
