@@ -482,5 +482,40 @@
       "id": "fbb6",
       "comboTag": "#OTHER#cmcs-hlth-ftns-mgzns-ckbks-other"
     }
-  ]
+  ],
+  "maintagCategory": [
+    {
+      "id": "ze01",
+      "main": "#FICTION"
+    },
+    {
+      "id": "ze02",
+      "main": "#NON-FICTION"
+    },
+    {
+      "id": "ze03",
+      "main": "#ACADEMIC-EDUCATIONAL"
+    },
+    {
+      "id": "ze04",
+      "main": "#PHILOSOPSHY-AND-RELIGION"
+    },
+    {
+      "id": "ze05",
+      "main": "#PROFESSIONAL-OR-TECHNICAL"
+    },
+    {
+      "id": "ze06",
+      "main": "#ARTS-OR-LITERATURE"
+    },
+    {
+      "id": "ze07",
+      "main": "#CHILDREN-OR-KIDS"
+    },
+    {
+      "id": "ze08",
+      "main": "#OTHER"
+    }
+  ] 
+  
 }

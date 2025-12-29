@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: "font-logo";
+            src: url("Fonts/font-collectionHr/main-netflix-san/NetflixSans-Bold.woff2") format(woff2);
+        }
+
+        :root {
+            --logo-font: font-logo;
+            --margin-between: 0.4rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+
+        }
+
+        #auto-row-container {
+            display: grid;
+            width: 100vw;
+            grid-auto-flow: row;
+            grid-auto-rows: max-content;
+            overflow: hidden;
+        }
+
+        #nav {
+            display: flex;
+            height: 12vh;
+            width: 100%;
+            background-color: black;
+            color: white;
+            justify-content: space-between;
+        }
+
+        #nav p {
+            font-size: 3rem;
+            margin: 0;
+            font-family: var(--logo-font);
+            font-weight: 700;
+            padding-left: 2rem;
+            text-decoration: overline;
+            padding-top: 1.2rem;
+            text-decoration-color: yellow;
+            color: green;
+            text-shadow:
+                -4px 0px 0 orange;
+
+        }
+
+        #nav span {
+            text-decoration: underline;
+            text-decoration-color: yellow;
+            color: lightblue;
+            text-shadow:
+                2px 0px 0 black;
+            font-style: italic;
+        }
+        #nav h3 {
+            font-size: clamp(1.4rem,2vh,2rem);
+            color: white;
+            margin-right: 2rem;
+            align-self: center;
+            font-style: italic;
+            
+        }
+
+        #content-container {
+            display: grid;
+            grid-template-columns: 4.5vw 91vw 4.5vw;
+            grid-template-rows: max-content;
+            grid-template-areas: ". middle .";
+            
+
+        }
+
+        #the-content-need {
+            display: flex;
+            height:fit-content;
+            grid-area: middle;
+            background-color: whitesmoke;
+       
+            background-color: rgb(108, 111, 108);
+            background-color: rgb(156, 117, 117);
+            background-color: transparent;
+
+            margin: var(--margin-between);
+            justify-content: space-around;
+            padding-bottom: var(--margin-between);
+            border-radius: 0 0 6px 6px;
+            
+        }
+
+        #the-content-need img {
+            width: 30vw;
+            aspect-ratio: 16/9;
+            margin-top: 1.4rem;
+            align-self:flex-start;
+            border: 1px solid black;
+            border-spacing: 2px;
+
+        }
+
+        #event-section {
+            display: grid;
+            width: 50vw;
+            grid-auto-flow: row;
+            grid-auto-rows: max-content;
+            background-color:white;
+            background-color:white;
+            border: 0.5px solid black;
+
+            margin-top: var(--margin-between);
+            border-radius: 0 0 6px 6px;
+            
+        }
+
+        #event-section h2 {
+            justify-self:center;
+        }
+        #event-section  p{
+            padding-left: 20px;
+            margin-bottom: var(--margin-between);
+            font-size: larger;
+            font-weight: 600;
+        }
+        #purchase-div{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        #purchase-div button{
+            min-height: 9vh;
+            min-width: 25vh;
+            color: white;
+            background-color: black;
+            border-radius: 9px;
+            margin-top: 15vw;
+            margin-bottom: 5vh;
+          
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="auto-row-container">
+        <div id="nav">
+            <p>Bibl<span id="text-section">yie</span></p>
+            <h3>Biblyie knows you're here :)</h3>
+        </div>
+        <div id="content-container">
+            <div id="the-content-need">
+                <img src="" alt="image">
+                <div id="event-section">
+                    <!-- <h2>It is Byblyie back pack for you </h2>
+                    <p>Title</p>
+                    <p>bookID</p>
+                    <p>price</p>
+                    <p>current price</p>
+                    <p>current price</p>
+                    <p>stock and status</p>
+                    <p>tag</p>
+                    <div id="purchase-div"><button>Purchase</button><button>Add to cart</button></div> -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        if(true){
+            let getID=localStorage.getItem("bookClickID");
+            console.log(getID);
+            async function getTheClick(){
+                let response=await fetch(`http://localhost:3000/bookRcmndd/${getID}`);
+                let Data=await response.json();
+                console.log(Data)
+                let EventSection=document.querySelector("#the-content-need")
+                    
+                EventSection.innerHTML=`<img src="${Data.imageurl}" alt="image">
+                <div id="event-section">
+                    <h2>This is Biblyie back pack for you </h2>
+                    <p> ${Data.title}</p>
+                    <p>Book ID: ${Data.id}</p>
+                    <p>MRP: ${Data.actualprice}</p>
+                    <p>Byblyie price :  ${Data.currentprice}</p>
+                    <p>Stock:  ${Data.stockcount}</p>
+                    <p>Info:  ${Data.details}</p>
+                    <p>Category:  ${Data.wholeTag}</p>
+                    <div id="purchase-div"><button>Purchase</button><button>Add to cart</button></div>`
+                    console.log(Data.imageurl)
+                
+            }
+            getTheClick()
+        }
+    </script>
+</body>
+
+</html>

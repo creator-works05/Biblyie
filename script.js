@@ -15,6 +15,10 @@ setInterval(() => {
 
 }, 2500);
 // ------------------------------------------------------------====--------------
+// ----------------------------Adding DELETE===============================
+
+
+
 // --------------------------------------------GETTING IMAGES FOR READ BANNER ---------------------------
 async function getImage() {
 
@@ -105,7 +109,7 @@ if (true) {
         console.log(fetched.length)
         if (flag >= fetched.length) {
             console.log("flag greater more option collapsed")
-            document.querySelector("#more-books-recommend").style.display= "none";
+            document.querySelector("#more-books-recommend").style.display = "none";
             flag = fetched.length;
             console.log("no button")
         }
@@ -130,11 +134,29 @@ if (true) {
         }
     }
     recommendBooks();
-    
+
+
+
     document.querySelector("#more-books-recommend").addEventListener("click", () => {
         flag += 5;
         parentDiv.innerHTML = "";
         recommendBooks();
     })
 }
+if (true) {
+    const booksContainer = document.querySelector("#books-recommended");
+    booksContainer.addEventListener("click", (e) => {
+        const recbutton = e.target.closest(".recommend-button");
+        if (!recbutton) return;
+
+        let thisId = recbutton.querySelector(".recommend-click-id").textContent;
+        console.log(thisId);
+        localStorage.setItem("bookClickID", thisId)
+        console.log(thisId, "---------------")
+
+    });
+   
+
+}
+
 

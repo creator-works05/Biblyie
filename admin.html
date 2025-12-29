@@ -23,7 +23,7 @@
             height: 30px;
             padding-right: 20px;
             margin-bottom: 20px;
-            margin-left: 50px; 
+            margin-left: 50px;
         }
 
         #add-recommendation-books button {
@@ -31,18 +31,20 @@
             margin-bottom: 20px;
             margin-left: 50px;
         }
-         #add-recommendation-books .homeadd {
-            width:auto ;
-            height:auto;
+
+        #add-recommendation-books .homeadd {
+            width: auto;
+            height: auto;
             padding-right: 0;
             margin-bottom: 20px;
-            margin-left: 0; 
+            margin-left: 0;
 
-         }
-         #add-wholetag input{
+        }
+
+        #add-wholetag input {
             height: 100px;
             width: 400px;
-         }
+        }
     </style>
 </head>
 
@@ -94,38 +96,39 @@
         </label><br><br>
         <label>Book hashtag:
             <select id="rec-book-hashtag" placeholder="Choose right tag#" name="hashtag" name="hashtag">
-                <option value="#FICTION">#FICTION</option>
-                <option value="#NON-FICTION">#NON-FICTION</option>
+                <option value="#OTHER" selected>SELECT A CATEGORY hashtag (default = #OTHER)</option>
             </select>
         </label>
-        <label>Book sub hashtag:
+        <label>Choose a sub hashtag:
             <select id="rec-book-subtag" placeholder=" Choose right Sub tag#" name="subtag" name="subhashtag">
-                <option value="#novel">#novel</option>
+                <option value="#cmcs-hlth-ftns-mgzns-ckbks-other">Leave to default</option>
             </select>
         </label>
         <br><br>
         <label>Place book in home :
-            <input type="radio" class="homeadd" name="homeAdd" value="yes" checked>
-            <input type="radio" class="homeadd" name="homeAdd" value="no">
+            <input type="radio" class="homeadd" id="foryes" name="homeAdd" value="yes" checked> <label for="foryes">[ (yes) ]</label>
+            
+            <input type="radio" class="homeadd" id="forno" name="homeAdd" value="no"><label for="forno">[ (no) ]</label>
         </label>
         <br><br>
 
-        <button>Add quote</button>
+        <button>Add books</button>
     </form>
-        
+
     <!-- --------------------------------------------------------------------ADD TAG FORM------------- -->
-     <form id="add-wholetag">
-        <input type="text" name="mainTag"  pattern="[A-Z]+(-[A-Z]+)*" placeholder="Add main tag Use only hyphen and UPPER CASE alphabets" required><br><br>
-        <input type="text" name="subTag"  pattern="[a-z]+(-[a-z]+)*" placeholder="Add main tag Use only hyphen and lower case alphabets" required><br><br>
+    <form id="add-wholetag">
+        <input type="text" name="mainTag" pattern="[A-Z]+(-[A-Z]+)*"
+            placeholder="Add main tag Use only hyphen and UPPER CASE alphabets" required><br><br>
+        <input type="text" name="subTag" pattern="[a-z]+(-[a-z]+)*"
+            placeholder="Add main tag Use only hyphen and lower case alphabets" required><br><br>
         <button>Add Book Tag</button>
-     </form>
+    </form>
 
 
 
 
     <script>
         let addImageForm = document.querySelector("#add-image-form");
-        console.log(addImageForm)
 
 
         addImageForm.addEventListener("submit", async (e) => {
@@ -166,6 +169,55 @@
         // -------------------------------------------------------ADD BOOKS IN RECOMMENDATION SECTION--------------
         if (true) {
             const addRecommendation = document.querySelector("#add-recommendation-books");
+            async function addOption() {
+                let response = await fetch("http://localhost:3000/maintagCategory");
+                let fetchedData = await response.json();
+                let recBookHashtag = document.querySelector("#rec-book-hashtag")
+                
+                
+                fetchedData.forEach((obj, i) => {
+                    i++;
+                    let optionValue = obj.main;
+                    recBookHashtag.innerHTML +=` <option value="${optionValue}">${i}).${optionValue}</option>`
+                    
+                    
+                    
+                    
+                });
+            }
+            addOption();
+            async function addSubOption() {
+                let response = await fetch("http://localhost:3000/addedWholeTag");
+                let fetchedData = await response.json();
+                let recBookHashtag = document.querySelector("#rec-book-hashtag")
+                let getSubTag=document.querySelector("#rec-book-subtag")
+                document.querySelector("#rec-book-subtag").innerHTML="";
+                let j=1;
+                fetchedData.forEach((element,i) => {
+                    let splitArray=element.comboTag.split("#");
+                    let mainFirst="#"+splitArray[1];
+                    // console.log(mainFirst,"---", recBookHashtag.value)
+                    if(recBookHashtag.value===mainFirst){
+                        let optionSubTag="#"+splitArray[2];
+                        document.querySelector("#rec-book-subtag").innerHTML+=`<option value="${optionSubTag}">${j}) ${optionSubTag}</option>`;
+                        j++;
+                    }
+
+                });
+                j=1;
+               
+               
+                
+                
+                
+            }
+            document.querySelector("#rec-book-hashtag").addEventListener("click",(e)=>{
+                let recBookHashtag=document.querySelector("#rec-book-hashtag");
+                addSubOption();
+
+
+            })
+
             addRecommendation.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 let imageurl = e.target.imageurl.value;
@@ -177,6 +229,7 @@
                 let hashtag = e.target.hashtag.value;
                 let subtag = e.target.subtag.value;
                 let homeAdd = e.target.homeAdd.value;
+                
                 let addSuffixTime = Date.now();
                 let lastFive = addSuffixTime % 100000;
                 let nameString = title.replace(/\s+/g, "");
@@ -217,9 +270,9 @@
                 if (!stockcount || !details || !hashtag || !subtag) {
 
                     let num = Math.random() * 10;
-                    if (!hashtag || !subtag) {
-                        wholeTag = "#OTHER#no-category";
-                    }
+                    // if (!hashtag || !subtag) {
+                    //     wholeTag = "#OTHER#no-category";
+                    // }
 
 
                     if (!details) {
@@ -242,8 +295,8 @@
                         if (!stockcount) { stockcount = 55; }
                     }
                 }
-                if(!actualprice && currentprice){
-                    actualprice=currentprice;
+                if (!actualprice && currentprice) {
+                    actualprice = currentprice;
                 }
                 if (!actualprice) {
                     let makeprice = Date.now();
@@ -313,21 +366,27 @@
             });
         }
         // --------------------------------------------------ADD TAG FORM-----------------------------
-        if(true){
-            let addWholeTag=document.querySelector("#add-wholetag");
-            addWholeTag.addEventListener("submit",async (e)=>{
+        if (true) {
+            let addWholeTag = document.querySelector("#add-wholetag");
+            addWholeTag.addEventListener("submit", async (e) => {
                 e.preventDefault();
-                let mainTag=e.target.mainTag.value;
-                let subTag=e.target.subTag.value;
-                let madeComboTag="#"+mainTag+"#"+subTag;
+                let mainTag = e.target.mainTag.value;
+                let subTag = e.target.subTag.value;
+                let madeComboTag = "#" + mainTag + "#" + subTag;
                 console.log(madeComboTag);
-                let madeTag={
-                    comboTag:madeComboTag
+                let madeTag = {
+                    comboTag: madeComboTag
                 }
-                await fetch(`http://localhost:3000/addedWholeTag`,{
-                    method:"POST",
-                    headers:{"Content-Type":"application/json"},
-                    body:JSON.stringify(madeTag)
+                await fetch(`http://localhost:3000/addedWholeTag`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(madeTag)
+                })
+                let mainTagHash = "#" + mainTag;
+                await fetch(`http://localhost:3000/maintagCategory`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ main: mainTagHash })
                 })
 
                 // e.target.reset();
