@@ -7,21 +7,82 @@
     <title>Document</title>
 </head>
 
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .fixed-box {
+        display: none;
+        min-width: fit-content;
+        max-width: 50vw;
+        min-height: fit-content;
+        max-height: max-content;
+        background-color: black;
+        color: orange;
+        border: 3px solid rgba(255, 0, 0, 0.418);
+        position: fixed;
+        top: 40vh;
+        left: 30vw;
+        padding-left: 30px;
+        gap: 6px;
+
+
+    }
+
+    .fixed-box h1 {
+        min-width: 0;
+        white-space: normal;
+        word-wrap: break-word;
+        font-size: large;
+    }
+
+    .fixed-box button {
+        width: 30px;
+        align-self: flex-start;
+
+    }
+</style>
+
 <body>
     <form id="sign-up">
-        <label for="form-usrnm">Username :</label> <input id="form-usrnm" type="text" name="username"
-            placeholder="Username"><br><br>
-        <label for="form-eml">Email :</label> <input id="form-eml" type="text" name="email"
+        <label for="form-usrnm">Username :</label> <input id="form-usrnm" pattern="[A-Za-z ]+" type="text"
+            name="username" placeholder="Username only allowed alphabets and white spaces"><br><br>
+        <label for="form-eml">Email :</label> <input id="form-eml" type="email" name="email"
             placeholder=" Email"><br><br>
-        <label for="form-pass">Password :</label> <input id="form-pass" type="email" name="password"
+        <label for="form-pass">Password :</label> <input id="form-pass" type="text" name="password"
             placeholder="Password"><br><br>
         <label for="form-cpass">Confirm password :</label> <input id="form-cpass" type="text" name="cpassword"
             placeholder="Confirm password"><br><br>
         <button type="submit">Sign up</button>
         <button type="reset">Clear</button>
     </form>
+    <a href="./login.html">Login</a>
+    <div class="fixed-box">
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quibusdam incidunt recusandae fuga sed
+            corporis voluptatum, asperiores rem saepe alias, velit dignissimos iusto, excepturi nisi commodi accusamus
+            perferendis! Rem, vitae.</h1>
+        <button onClick="setVisibility()">X</button>
+    </div>
     <script>
+        let fixedBox = document.querySelector(".fixed-box");
+        function setVisibility() {
+            fixedBox.style.display = "none";
+        }
         let signUp = document.querySelector("#sign-up");
+        let randomChoose = Date.now() % 100000;
+        let reverseDate = randomChoose
+            .toString()
+            .split("")
+            .reverse()
+            .join("")
+        console.log(reverseDate)
+        //     console.log(reverseDate.slice(0,3))
+
+
+
+
 
 
         signUp.addEventListener("submit", async (e) => {
@@ -32,18 +93,47 @@
             password = e.target.password.value;
             cpassword = e.target.cpassword.value;
             if (!username || !email || !password || !cpassword) {
-                alert("Fill all the fields properly")
-                alert(username + email + password + cpassword)
+                fixedBox.style.display = "flex";
+                fixedBox.querySelector("h1").innerText = "Fill those fields properly"
+
                 return
 
             }
+            try {
+                let thisResponse = await fetch(`http://localhost:3000/users`);
+                let signUpData = await thisResponse.json();
+                let usernameMatch = signUpData.some((element) => element.username === username);
+
+                let emailMatch = signUpData.some((element) => element.email === email);
+                if (usernameMatch) {
+                    fixedBox.style.display = "flex";
+
+                    fixedBox.querySelector("h1").innerText = "Try another valid username.This username \n has been already taken"
+
+                    return;
+
+                }
+                if (emailMatch) {
+                    fixedBox.style.display = "flex";
+                    fixedBox.querySelector("h1").innerText = "Try another valid email address.This email already exists"
+                    return;
+                }
+            }
+            catch (e) {
+                console.log("username validation thrown an error", e.message);
+            }
+            let idCrypt = username.slice(0, 4) + username.slice(0, 3)
+                .split("")
+                .reverse()
+                .join("") + randomChoose;
+            console.log(idCrypt)
 
             if (cpassword != password) {
                 alert("Confirm should be the same");
                 return
             }
-
             let addUser = {
+                id: idCrypt,
                 username,
                 email,
                 password,
@@ -61,11 +151,11 @@
 
 
                 setTimeout(() => {
-                    window.location.href = "./index.html";
+                    window.location.href = "./login.html";
                     console.log("checking")
                     console.log("redirection to index.html succeeded ");
 
-                },0);
+                }, 0);
                 signUp.reset();
             }
             catch (error) {

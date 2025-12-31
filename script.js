@@ -152,7 +152,7 @@ if (true) {
         let thisId = recbutton.querySelector(".recommend-click-id").textContent;
         console.log(thisId);
         localStorage.setItem("bookClickID", thisId)
-        console.log(thisId, "---------------")
+        window.location.href="productview.html"
 
     });
    

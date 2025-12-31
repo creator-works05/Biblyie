@@ -6,54 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .fixed-box {
+        display: none;
+        min-width: fit-content;
+        max-width: 50vw;
+        min-height: fit-content;
+        max-height: max-content;
+        background-color: black;
+        color: orange;
+        border: 3px solid rgba(255, 0, 0, 0.418);
+        position: fixed;
+        top: 40vh;
+        left: 30vw;
+        padding-left: 30px;
+        gap: 6px;
+
+
+    }
+
+    .fixed-box h1 {
+        min-width: 0;
+        white-space: normal;
+        word-wrap: break-word;
+        font-size: large;
+    }
+
+    .fixed-box button {
+        width: 30px;
+        align-self: flex-start;
+
+    }
+</style>
 
 <body>
     <div id="auth-section">
         <div id="logContainer">
             <form id="loginForm">
-                <label>Username: <input type="text" name="username" id="loginname" placeholder="Enter your name">
+                <label>Username: <input type="text" name="username" pattern="[A-Za-z ]+" id="loginname"
+                        placeholder="Enter your name">
                 </label><br><br>
-                <label>Password : <input type="password" name="password" id="pass-log"
-                        placeholder="Enter your Password">
+                <label>Password : <input type="password" name="password" id="pass-log" placeholder="Enter your Password"
+                        autocomplete="current-password">
                 </label>
                 <br><br>
                 <button> Submit</button>
                 <button type="reset">Reset</button>
             </form>
+
         </div>
+    </div>
+    <div class="fixed-box">
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quibusdam incidunt recusandae fuga sed
+            corporis voluptatum, asperiores rem saepe alias, velit dignissimos iusto, excepturi nisi commodi accusamus
+            perferendis! Rem, vitae.</h1>
+        <button onClick="setVisibility()">X</button>
     </div>
 
     <script>
-        if(!localStorage.getItem("username")){
-        let usernameInpt = prompt("Enter your signup username");
-        let passwordInpt = prompt("Enter your signup password");
-        localStorage.setItem("username", usernameInpt);
-        localStorage.setItem("password", passwordInpt);
-
+        let fixedBox = document.querySelector(".fixed-box")
+        function setVisibility() {
+            fixedBox.style.display = "none";
         }
-       
 
         let form = document.querySelector("#loginForm");
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
+
 
             let username = e.target.username.value;
             let password = e.target.password.value;
             if (!username || !password) {
-                alert("fill required fields properly");
+                fixedBox.style.display = "flex";
+                fixedBox.querySelector("h1").innerText = "Enter the given fields properly ";
                 return;
+
             }
-            let getUsername = localStorage.getItem("username");
-            let getPassword = localStorage.getItem("password");
-            if (getUsername === username && getPassword === password) {
-                window.location.href = "index.html";
-                console.log(window.location.href);
+            let response = await fetch("http://localhost:3000/users");
+            let logs = await response.json();
+            let logsNow = "";
+            let logMatch = logs.some((element) => {
+                logsNow = element.id;
+                console.log(logsNow)
+                return element.username === username && element.password === password
+            })
+            if(logMatch){
+                index=1;
+                await fetch(`http://localhost:3000/loggedUser/${index}`,{
+                    method:"PUT",
+                    headers:{"Content-Type":"application/json"},
+                    body:JSON.stringify({id:1,user:logsNow})
+                })
+                window.location.href="index.html"
             }
-            else {
-                alert("login failed");
-            }
+
+            // if (getUsername === username && getPassword === password) {
+            //     window.location.href = "index.html";
+            //     console.log(window.location.href);
+            // }
+            // else {
+            //     alert("login failed");
+            // }
             form.reset();
-            setItemCheck++;
+            // setItemCheck++;
         })
     </script>
 </body>

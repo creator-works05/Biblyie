@@ -261,13 +261,14 @@ body {
     grid-template-columns:100%;
     width:max(120px,13vw);
     height: max(160px,15vw);
-    outline:2px solid red;
+    outline:0.5px solid red;
     margin-bottom: var(--margin-between);
     margin-left: var(--margin-between);
     margin-right: var(--margin-between);
     margin-top: 0;
     justify-content: center;
     padding-top: 1.5px;
+    background-color: rgba(255, 255, 255, 0.612);
 }
 .recommend-button{
     width: fit-content;
@@ -287,7 +288,8 @@ body {
     margin: 0;
     /* padding: 0; */
     min-width: 0;
-    font-size:clamp(12px,2vw,16px);
+    font-size:clamp(8px,1vw,12px);
+    padding: 0 4px;
     
     
 }

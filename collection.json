@@ -1,4 +1,13 @@
 {
-  "users": [],
-  "admins": []
+  "users": [
+    {
+      "id": "amalama34761",
+      "username": "amal",
+      "email": "aml@gmail.com",
+      "password": "123",
+      "status": true
+    }
+  ],
+  "admins": [],
+  "loggedUser":{}
 }
