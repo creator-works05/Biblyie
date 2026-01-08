@@ -270,6 +270,7 @@
             }
         }
         fetchTags();
+        let fetchedBooksTop;
         if (true) {
             let blankSticky = document.querySelector(".blank-sticky")
             let assignBookGrid = document.querySelector(".assign-book-grid")
@@ -309,7 +310,6 @@
 
             }
 
-
             mainTagButtonGrid.addEventListener("click", async (e) => {
                 const tagButton = e.target.closest(".tag-button");
                 if (!tagButton) {
@@ -324,6 +324,9 @@
                 }, 300)
                 let response = await fetch("http://localhost:3000/bookRcmndd");
                 let fetchedBooks = await response.json();
+                let broughtBook=fetchedBooks;
+                fetchedBooksTop=broughtBook;
+                console.log(broughtBook)
                 let wholeTagRes = await fetch("http://localhost:3000/addedWholeTag");
                 let wholeTagGet = await wholeTagRes.json();
                 if (pickedTag === "#All") {
@@ -338,14 +341,14 @@
                     for (let i = 0; i < fetchedBooks.length; i++) {
                         let bookItem = fetchedBooks[i];
                         bookcaseflex.innerHTML += `<div class="book-frame">
-                        <h3>${bookItem.title}</h3>
-                        <img src="${bookItem.imageurl}" alt="Image is not available now">
-                        <p class="book-frame-desc">${bookItem.details} </p>
-                        <p>₹ ${bookItem.currentprice}</p>
-                        <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
-                        <p class="forBookIdFetch"> ${bookItem.id}</p>
-
-                        </div>`
+                            <h3>${bookItem.title}</h3>
+                            <img src="${bookItem.imageurl}" alt="Image is not available now">
+                            <p class="book-frame-desc">${bookItem.details} </p>
+                            <p>₹ ${bookItem.currentprice}</p>
+                            <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
+                            <p class="forBookIdFetch"> ${bookItem.id}</p>
+                            
+                            </div>`
 
                     }
                     return;
@@ -358,15 +361,15 @@
                     bookcaseflex.style.gridArea = "main"
                     dotBlank.style.gridArea = "side"
                     // --------------------Hide side------------------------------------------
-                    blankSticky.innerHTML= ``;
+                    blankSticky.innerHTML = ``;
                     for (let i = 0; i < wholeTagGet.length; i++) {
                         let splitWhole = wholeTagGet[i].comboTag.split("#");
                         if ("#" + splitWhole[1] === pickedTag) {
                             blankSticky.innerHTML += `
-                            <button>
-                                <p>${splitWhole[2]}</p>
-                                <h5 class="side-inside-button">${wholeTagGet[i].comboTag}</h5>
-                            </button>`;
+                                <button>
+                                    <p>${splitWhole[2]}</p>
+                                    <h5 class="side-inside-button">${wholeTagGet[i].comboTag}</h5>
+                                    </button>`;
 
 
 
@@ -383,20 +386,51 @@
 
                         if (pickedTag === "#" + currentBookId[1]) {
                             bookcaseflex.innerHTML += `<div class="book-frame">
+                                        <h3>${bookItem.title}</h3>
+                                        <img src="${bookItem.imageurl}" alt="Image is not available now">
+                                        <p class="book-frame-desc">${bookItem.details} </p>
+                                        <p>₹ ${bookItem.currentprice}</p>
+                                        <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
+                                        <p class="forBookIdFetch"> ${bookItem.id}</p>
+                                        
+                                        </div>`
+                        }
+
+                    }
+                    console.log(fetchedBooksTop)
+                }
+            })
+        }
+        // ---------------------------------sidebar control---------------
+            let bookcaseflex = document.querySelector(".bookcaseflex")
+
+            let blankSticky = document.querySelector(".blank-sticky");
+            blankSticky.addEventListener("click",async (e)=>{
+
+                let currentButton=e.target.closest("button");
+                if(!currentButton)return;
+                let response = await fetch("http://localhost:3000/bookRcmndd");
+                let fetchedBooks = await response.json();
+                bookcaseflex.innerHTML ="";
+                for (let i = 0; i < fetchedBooks.length; i++){
+                   let fromBtn= currentButton.querySelector("h5").textContent;
+                   let bookItem=fetchedBooks[i]
+                   
+                   if(fromBtn===bookItem.wholeTag){
+                     bookcaseflex.innerHTML += `<div class="book-frame">
                         <h3>${bookItem.title}</h3>
                         <img src="${bookItem.imageurl}" alt="Image is not available now">
                         <p class="book-frame-desc">${bookItem.details} </p>
                         <p>₹ ${bookItem.currentprice}</p>
                         <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
                         <p class="forBookIdFetch"> ${bookItem.id}</p>
-
+                        
                         </div>`
-                        }
+                   }
 
-                    }
                 }
             })
-        }
+
 
 
     </script>
