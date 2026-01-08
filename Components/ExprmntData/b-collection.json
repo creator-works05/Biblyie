@@ -1,8 +1,20 @@
 {
   "loggedUser": [
     {
-      "id": "1",
-      "user": "mohahom73264"
+      "id": "3dOWC2RwEY4685",
+      "user": "amalama58021"
+    },
+    {
+      "id": "2arYVj5V6o4594",
+      "user": "amalama58021"
+    },
+    {
+      "id": "JQyApaoLig7582",
+      "user": "amalama58021"
+    },
+    {
+      "id": "oRPJSOM39b1152",
+      "user": "amalama58021"
     }
   ],
   "users": [
@@ -319,6 +331,72 @@
       "stockcount": 55,
       "wholeTag": "#FICTION#novel",
       "homeView": "yes"
+    },
+    {
+      "id": "Patheira50228",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "Pathemaari",
+      "details": "This book ....... Make your order now",
+      "actualprice": 156,
+      "currentprice": 116,
+      "stockcount": 12,
+      "wholeTag": "#OTHER#cmcs-hlth-ftns-mgzns-ckbks-other",
+      "homeView": "yes"
+    },
+    {
+      "id": "Randiihz42470",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "Randidangazhi",
+      "details": "This book ....... Make your order now",
+      "actualprice": 4390,
+      "currentprice": 4350,
+      "stockcount": 55,
+      "wholeTag": "#ARTS-OR-LITERATURE#literary-criticism",
+      "homeView": "yes"
+    },
+    {
+      "id": "mathilak75952",
+      "imageurl": "Components/ImageSection/BookShelf/altimage.png",
+      "title": "mathilukal",
+      "details": "This book ....... Make your order now",
+      "actualprice": 4169,
+      "currentprice": 4129,
+      "stockcount": 55,
+      "wholeTag": "#OTHER#cmcs-hlth-ftns-mgzns-ckbks-other",
+      "homeView": "no"
+    },
+    {
+      "id": "Educadet77301",
+      "imageurl": "Components/ImageSection/BookShelf/altimage7.png",
+      "title": "Educated",
+      "details": "fiction book. Thou shons dfho htwh wkbt wwejph gh ong p sdfn pfned pjdof ogjkp osh hfoh ohhd ioholoij jhodsj ujh df ikjdf  jhsdkjf  dfoisd iojo f  jsidjf ijdo o sdjf o nsdoj fijhsdokf  sdjoidjfof  djfnsdj oisdjfio  fjsjdoi idjfiodsj  cjdsfj ifjdsio pijfsdio ffjsdi fdskofj dfjodifbfdf phdffg fbedjiof",
+      "actualprice": 1094,
+      "currentprice": 1054,
+      "stockcount": 55,
+      "wholeTag": "#FICTION#short-stories",
+      "homeView": "yes"
+    },
+    {
+      "id": "Atomisti39613",
+      "imageurl": "Components/ImageSection/BookShelf/altimage7.png",
+      "title": "Atomic Habits",
+      "details": "fiction book. Thou shons dfho htwh wkbt wwejph gh ong p sdfn pfned pjdof ogjkp osh hfoh ohhd ioholoij jhodsj ujh df ikjdf  jhsdkjf  dfoisd iojo f  jsidjf ijdo o sdjf o nsdoj fijhsdokf  sdjoidjfof  djfnsdj oisdjfio  fjsjdoi idjfiodsj  cjdsfj ifjdsio pijfsdio ffjsdi fdskofj dfjodifbfdf phdffg fbedjiof",
+      "actualprice": 5552,
+      "currentprice": 5512,
+      "stockcount": 12,
+      "wholeTag": "#NON-FICTION#self-help",
+      "homeView": "yes"
+    },
+    {
+      "id": "patririo72172",
+      "imageurl": "Components/ImageSection/BookShelf/altimage2.png",
+      "title": "patriot:A memoir",
+      "details": "This book ....... Make your order now",
+      "actualprice": 320,
+      "currentprice": 312,
+      "stockcount": 55,
+      "wholeTag": "#NON-FICTION#biography-or-autobiography",
+      "homeView": "yes"
     }
   ],
   "RcmndBookIDnTag": [
@@ -397,6 +475,30 @@
     {
       "id": "book191k77658",
       "wholeTag": "#FICTION#novel"
+    },
+    {
+      "id": "Patheira50228",
+      "wholeTag": "#OTHER#cmcs-hlth-ftns-mgzns-ckbks-other"
+    },
+    {
+      "id": "Randiihz42470",
+      "wholeTag": "#ARTS-OR-LITERATURE#literary-criticism"
+    },
+    {
+      "id": "mathilak75952",
+      "wholeTag": "#OTHER#cmcs-hlth-ftns-mgzns-ckbks-other"
+    },
+    {
+      "id": "Educadet77301",
+      "wholeTag": "#FICTION#short-stories"
+    },
+    {
+      "id": "Atomisti39613",
+      "wholeTag": "#NON-FICTION#self-help"
+    },
+    {
+      "id": "patririo72172",
+      "wholeTag": "#NON-FICTION#biography-or-autobiography"
     }
   ],
   "addedWholeTag": [

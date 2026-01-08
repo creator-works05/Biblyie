@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .assign-book-grid {
+        display: grid;
+        width: 100%;
+        height: max-content;
+        grid-template-columns: minmax(50px, 15vw) 1fr;
+        grid-template-areas: "side main";
+
+
+
+
+    }
+
+    .bookcaseflex {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: RED;
+        min-height: 99vh;
+        max-height: max-content;
+        min-width: 30vw;
+        align-items: flex-start;
+        grid-area: "main";
+    }
+
+    .blank {
+
+        /* background-color: cadetblue; */
+        /* position: static; */
+        /* z-index: -1; */
+        position: static;
+    }
+
+    .blank>div {
+        position: sticky;
+        background-color: rgb(0, 0, 0);
+        height: 90vh;
+        min-width: 50px;
+        max-width: 15vw;
+        top: 22px;
+        z-index: 0;
+        overflow: scroll;
+        scrollbar-width: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5vw;
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+
+
+    }
+
+    #main-tag-scroll {
+        position: sticky;
+        top: 0;
+        display: flex;
+        margin: 0;
+        flex-wrap: wrap;
+        /* width: 100%; */
+        z-index: 6;
+
+
+
+    }
+
+    .tag-scroll {
+        display: flex;
+        min-width: 10vw;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        flex: 1;
+        justify-content: start;
+
+
+    }
+
+    #main-tag-button-grid {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        gap: 8px;
+
+    }
+
+    #main-tag-button-grid>div {
+        background-color: blueviolet;
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #main-tag-button-grid>div h2 {
+        margin: 0;
+        font-size: large;
+        overflow: hidden;
+    }
+
+    #main-tag-button-grid>div h3 {
+        margin: 0;
+        display: none;
+    }
+
+    #scrollR {
+        min-width: 50px;
+        max-width: 10vw;
+
+    }
+
+    #scrollL {
+        min-width: 50px;
+        max-width: 10vw;
+    }
+
+    .random {
+        height: 70vw;
+    }
+
+    .blank-sticky>button {
+
+        min-width: 200px;
+        min-height: 1vw;
+        height: 20%;
+        background-color: rgb(217, 217, 217);
+        flex-shrink: 0;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 40px;
+
+
+    }
+
+    .blank-sticky>button h5 {
+        display: none;
+    }
+
+    .book-frame {
+        display: grid;
+        max-width: 300px;
+        min-width: 150px;
+        aspect-ratio: 3/3.5;
+        border: 2px solid black;
+        grid-auto-flow: row;
+        grid-auto-rows: auto;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .book-frame * {
+        margin: 0;
+    }
+
+    .book-frame>img {
+        width: 96%;
+        aspect-ratio: 16/9;
+        background-color: black;
+        color: white;
+    }
+
+    .book-frame-desc {
+        overflow: hidden;
+        overflow-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+        padding: 0;
+        margin: 2px 2px 0px 2px;
+        height: 50px;
+        text-overflow: hidden;
+    }
+
+    .bookid-frame {
+        display: none;
+    }
+
+    .forBookIdFetch {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="nav">
+        <h1>This is nav bar</h1>
+    </div>
+    <div id="main-tag-scroll">
+        <button id="scrollL">
+            < </button>
+                <div class="tag-scroll">
+                    <div id="main-tag-button-grid">
+                        <div class="tag-button helloBtnTag">
+                            <h2>All</h2>
+                            <h3>#All</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <button id="scrollR">></button>
+    </div>
+    <div class="assign-book-grid">
+        <div class="blank">
+            <div class="blank-sticky">
+
+                <button>
+                    <p>label</p>
+                    <h5 class="side-inside-button">whole id</h5>
+                </button>
+                <button>
+                    <p>label</p>
+                    <h5 class="side-inside-button">whole id</h5>
+                </button>
+                <button>
+                    <p>label</p>
+                    <h5 class="side-inside-button">whole id</h5>
+                </button>
+                <button>
+                    <p>label</p>
+                    <h5 class="side-inside-button">whole id</h5>
+                </button>
+                <button>
+                    <p>label</p>
+                    <h5 class="side-inside-button">whole id</h5>
+                </button>
+
+            </div>
+        </div>
+        <div class="bookcaseflex">
+            <!-- -----------------------------BOOKS WILL BE LISTED HERE ----------------------------------- -->
+        </div>
+    </div>
+
+    </div>
+    <!-- <div class="random" width="500" height="1000">hello</div> -->
+
+    <!-- FOR SCRIPT------------------------------------------- -->
+    <script>
+
+        let mainTagButtonGrid = document.querySelector("#main-tag-button-grid");
+        async function fetchTags() {
+            try {
+                let response = await fetch("http://localhost:3000/maintagCategory");
+                let fetchedData = await response.json();
+                fetchedData.forEach(element => {
+                    let splitArray = element.main.split("#")
+
+                    mainTagButtonGrid.innerHTML += `<div class="tag-button"><h2>${splitArray[1]}</h2>
+                        <h3>${element.main}</h3></div>`
+
+                });
+
+            }
+            catch (e) {
+                console.log("error occurred while fetching tags", e.message)
+            }
+        }
+        fetchTags();
+        if (true) {
+            let blankSticky = document.querySelector(".blank-sticky")
+            let assignBookGrid = document.querySelector(".assign-book-grid")
+            let dotBlank = document.querySelector(".blank")
+            let bookcaseflex = document.querySelector(".bookcaseflex")
+            let mainTagButtonGrid = document.querySelector("#main-tag-button-grid");
+            let helloBtnTag = document.querySelector(".helloBtnTag")
+            let defaultTag = "#All"
+            async function defBook() {
+                let response = await fetch("http://localhost:3000/bookRcmndd");
+                let fetchedBooks = await response.json();
+
+                bookcaseflex.innerHTML = "";
+                for (let i = 0; i < fetchedBooks.length; i++) {
+                    let bookItem = fetchedBooks[i];
+                    bookcaseflex.innerHTML += `<div class="book-frame">
+                        <h3>${bookItem.title}</h3>
+                        <img src="${bookItem.imageurl}" alt="Image is not available now">
+                        <p class="book-frame-desc">${bookItem.details} </p>
+                        <p>₹ ${bookItem.currentprice}</p>
+                        <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
+                        <p class="forBookIdFetch"> ${bookItem.id}</p>
+                        
+                        </div>`
+
+                }
+            }
+            if (defaultTag === "#All") {
+                // --------------------Hide side------------------------------------------
+                assignBookGrid.style.gridTemplateColumns = "0vw 100%"
+                dotBlank.style.display = "none"
+                // bookcaseflex.style.minWidth="100%"
+                bookcaseflex.style.gridArea = "main"
+                // --------------------Hide side------------------------------------------
+
+                defBook();
+
+            }
+
+
+            mainTagButtonGrid.addEventListener("click", async (e) => {
+                const tagButton = e.target.closest(".tag-button");
+                if (!tagButton) {
+                    return;
+                }
+                const pickedTag = tagButton.querySelector("h3").textContent;
+                tagButton.style.backgroundColor = "green";
+                tagButton.style.color = "white";
+                setTimeout(() => {
+                    tagButton.style.backgroundColor = "#8a2be2";
+                    tagButton.style.color = "black";
+                }, 300)
+                let response = await fetch("http://localhost:3000/bookRcmndd");
+                let fetchedBooks = await response.json();
+                let wholeTagRes = await fetch("http://localhost:3000/addedWholeTag");
+                let wholeTagGet = await wholeTagRes.json();
+                if (pickedTag === "#All") {
+                    // --------------------Hide side------------------------------------------
+                    assignBookGrid.style.gridTemplateColumns = "0vw 100%"
+                    dotBlank.style.display = "none"
+                    // bookcaseflex.style.minWidth="100%"
+                    bookcaseflex.style.gridArea = "main"
+                    // --------------------Hide side------------------------------------------
+                    bookcaseflex.innerHTML = "";
+
+                    for (let i = 0; i < fetchedBooks.length; i++) {
+                        let bookItem = fetchedBooks[i];
+                        bookcaseflex.innerHTML += `<div class="book-frame">
+                        <h3>${bookItem.title}</h3>
+                        <img src="${bookItem.imageurl}" alt="Image is not available now">
+                        <p class="book-frame-desc">${bookItem.details} </p>
+                        <p>₹ ${bookItem.currentprice}</p>
+                        <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
+                        <p class="forBookIdFetch"> ${bookItem.id}</p>
+
+                        </div>`
+
+                    }
+                    return;
+                }
+                else {
+                    // --------------------Hide side------------------------------------------
+                    assignBookGrid.style.gridTemplateColumns = " minmax(50px, 15vw) 1fr"
+                    dotBlank.style.display = "block"
+                    // bookcaseflex.style.minWidth="100%"
+                    bookcaseflex.style.gridArea = "main"
+                    dotBlank.style.gridArea = "side"
+                    // --------------------Hide side------------------------------------------
+                    blankSticky.innerHTML= ``;
+                    for (let i = 0; i < wholeTagGet.length; i++) {
+                        let splitWhole = wholeTagGet[i].comboTag.split("#");
+                        if ("#" + splitWhole[1] === pickedTag) {
+                            blankSticky.innerHTML += `
+                            <button>
+                                <p>${splitWhole[2]}</p>
+                                <h5 class="side-inside-button">${wholeTagGet[i].comboTag}</h5>
+                            </button>`;
+
+
+
+
+                        }
+                    }
+
+                    // ___________________________________________________________________________________________________________
+                    bookcaseflex.innerHTML = "";
+                    for (let i = 0; i < fetchedBooks.length; i++) {
+                        let bookItem = fetchedBooks[i];
+
+                        let currentBookId = bookItem.wholeTag.split("#");
+
+                        if (pickedTag === "#" + currentBookId[1]) {
+                            bookcaseflex.innerHTML += `<div class="book-frame">
+                        <h3>${bookItem.title}</h3>
+                        <img src="${bookItem.imageurl}" alt="Image is not available now">
+                        <p class="book-frame-desc">${bookItem.details} </p>
+                        <p>₹ ${bookItem.currentprice}</p>
+                        <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
+                        <p class="forBookIdFetch"> ${bookItem.id}</p>
+
+                        </div>`
+                        }
+
+                    }
+                }
+            })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

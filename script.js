@@ -1,3 +1,17 @@
+    // LOGIN SET UP------------------------------------------------------
+if(!localStorage.getItem("genToken")){
+    window.location.href="./login.html"
+}
+// async function knowLogin() {
+//     let response=fetch
+    
+// }
+// setInterval(()=>{
+         
+//     if(allowedUser!=localStorage.getItem("genToken")){
+//         alert("Unauthorized changes in user data")
+//     }
+// },5000)
 //INDEXpage scripts---------------------------------------------------------------------------
 // -------------------------------------------------AUTO SCROLL SETTING FOR BANNER----------------------
 const highlightRead = document.querySelector("#highlight-read");

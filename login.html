@@ -64,6 +64,15 @@
     </div>
 
     <script>
+        function generateToken(length){
+             const theChars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+             let result="";
+             for(let i=0;i<length;i++){
+                result+=theChars.charAt(Math.floor(Math.random()*theChars.length))
+             }
+            return result + Date.now()%10000;
+        }
+        // console.log(generateToken(10))
         let fixedBox = document.querySelector(".fixed-box")
         function setVisibility() {
             fixedBox.style.display = "none";
@@ -91,11 +100,13 @@
                 return element.username === username && element.password === password
             })
             if(logMatch){
+                let genToken=generateToken(10);
+                localStorage.setItem("genToken",genToken)
                 index=1;
-                await fetch(`http://localhost:3000/loggedUser/${index}`,{
-                    method:"PUT",
+                await fetch(`http://localhost:3000/loggedUser`,{
+                    method:"POST",
                     headers:{"Content-Type":"application/json"},
-                    body:JSON.stringify({id:1,user:logsNow})
+                    body:JSON.stringify({id:genToken,user:logsNow})
                 })
                 window.location.href="index.html"
             }

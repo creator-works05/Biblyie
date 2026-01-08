@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin:0;
+    }
+    *{
+        box-sizing: border-box;
+    }
+    .assign-book-grid{
+        display: grid;
+        width: 100%;
+        height: max-content;
+        grid-template-columns: minmax(50px,15vw) 1fr;
+      
+        
+
+    }
+    .bookcaseflex{
+        background-color: RED;
+        min-height: 100vw;
+        max-height: max-content;
+        min-width: 30vw;
+    }
+    .blank{
+        background-color: cadetblue;
+    }
+    #main-tag-scroll{
+        position: sticky;
+        top: 0;
+        display: flex;
+        margin: 0;
+        flex-wrap:wrap;
+        /* width: 100%; */
+        
+        
+        
+    }
+    .tag-scroll{
+        display: flex;
+        min-width: 10vw;
+        flex-wrap: nowrap;
+        overflow-x:auto;
+        scrollbar-width: none;
+        flex:1;
+        justify-content: start;
+        
+        
+    }
+    #main-tag-button-grid{
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        gap:8px;
+
+    }
+    #main-tag-button-grid > button {
+        background-color: blueviolet;
+        width: 500px;
+    }
+#scrollR{
+    min-width: 50px;
+    max-width: 10vw;
+    
+}
+#scrollL{
+    min-width: 50px;
+    max-width: 10vw;
+    
+}
+</style>
+<body>
+    <div id="nav">
+        <h1>This is nav bar</h1>
+    </div>
+    <div id="main-tag-scroll">
+        <button id="scrollL"><</button>
+        <div class="tag-scroll">
+            <div id="main-tag-button-grid">
+                   
+            </div>
+        </div>
+        <button id="scrollR">></button>
+    </div>
+    <div class="assign-book-grid">
+        <div class="blank"></div>
+        <div class="bookcaseflex"></div>
+
+    </div>
+
+    <!-- FOR SCRIPT------------------------------------------- -->
+     <script>
+         let mainTagButtonGrid= document.querySelector("#main-tag-button-grid");
+        async function fetchTags() {
+            try {
+                let response = await fetch("http://localhost:3000/maintagCategory");
+                let fetchedData = await response.json();
+                fetchedData.forEach(element => {
+                    let splitArray=element.main.split("#")
+
+                    mainTagButtonGrid.innerHTML+=`<button>${splitArray[1]}</button>`
+
+                });
+
+            }
+            catch (e) {
+                 console.log("error occurred while fetching tags", e.message)
+             }
+       }
+       fetchTags();
+     </script>
+
+</body>
+</html>
