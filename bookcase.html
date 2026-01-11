@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <style>
+    
+    
     body {
         margin: 0;
     }
@@ -30,12 +32,31 @@
     .bookcaseflex {
         display: flex;
         flex-wrap: wrap;
-        background-color: RED;
+        /* background-color: RED; */
         min-height: 99vh;
         max-height: max-content;
         min-width: 30vw;
         align-items: flex-start;
         grid-area: "main";
+        justify-content:flex-start;
+        padding-top: 20px;
+        padding-left: 20px;
+        /* background: linear-gradient(to bottom, darkslategray 60% ,rgb(15, 28, 28)); */
+        gap:20px;
+        flex-grow: 1;
+        position: relative;
+        z-index: 0;
+        
+
+        
+    }
+    .bookcaseflex::before{
+        content:"";
+        position:absolute;
+        inset: 0;
+        z-index: -1;
+        background:linear-gradient(to bottom,rgba(82, 132, 212, 0.897) 0%, rgb(47, 98, 174) 30%);
+        backdrop-filter: blur(20px) brightness(50%);
     }
 
     .blank {
@@ -75,10 +96,11 @@
         flex-wrap: wrap;
         /* width: 100%; */
         z-index: 6;
-
+        
 
 
     }
+   
 
     .tag-scroll {
         display: flex;
@@ -88,20 +110,28 @@
         scrollbar-width: none;
         flex: 1;
         justify-content: start;
+        /* background:black; */
+        
 
 
     }
+    
+   
 
     #main-tag-button-grid {
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: max-content;
         gap: 8px;
+        /* background-color: rgb(0, 0, 79); */
+        
 
     }
-
+    
     #main-tag-button-grid>div {
-        background-color: blueviolet;
+        background-color: rgb(183, 182, 186);
+        border: 2px solid blueviolet;
+        border: 3px;
         width: 500px;
         display: flex;
         flex-direction: column;
@@ -120,9 +150,25 @@
     }
 
     #scrollR {
+        position: relative;
         min-width: 50px;
+        color: white;
         max-width: 10vw;
+        border:0; 
+        z-index: 0;
 
+    }
+    #scrollR::after{
+        content:"";
+        position: absolute;
+        inset: 0;
+        right: 0px;
+        bottom: -2px;
+        top: -2px;
+        left: -70px;
+        background:linear-gradient(to left,indigo 47px,rgb(0, 0, 0) 48px,rgba(0, 0, 0, 0.726) 59px,rgba(0, 0, 0, 0.212) 80%,transparent 100%);
+        border:0;
+        z-index: -1;
     }
 
     #scrollL {
@@ -154,14 +200,35 @@
 
     .book-frame {
         display: grid;
-        max-width: 300px;
+        max-width: 350px;
         min-width: 150px;
         aspect-ratio: 3/3.5;
         border: 2px solid black;
         grid-auto-flow: row;
         grid-auto-rows: auto;
         align-items: center;
+        color: black;
         justify-items: center;
+        background:rgb(79, 156, 152);
+        /* background:rgb(245, 222, 179); */
+        backdrop-filter: brightness(120%);
+        flex-grow: 1;
+        position: relative;
+        z-index: 0;
+        border: 5px solid rgba(124, 241, 236, 0.896);
+        /* outline: 5px solid rgba(191, 195, 195, 0.779); */
+        border-radius: 6px;
+        
+    }
+    .book-frame::before{
+        content:"";
+        inset: 0;
+        position: absolute;
+        /* background:linear-gradient(to right,rgba(0, 0, 0, 0.416) 0%,transparent 2% ),
+                linear-gradient(to left,rgba(0, 0, 0, 0.416) 0%,transparent 2% ),
+                linear-gradient(to top,rgba(0, 0, 0, 0.416) 0%,transparent 2% ),
+                linear-gradient(to bottom,rgba(0, 0, 0, 0.416) 0%,transparent 2% ); */
+        z-index: -1;
     }
 
     .book-frame * {
@@ -193,11 +260,38 @@
     .forBookIdFetch {
         display: none;
     }
+    /* -----------------------------------------------NAV CSS---------------------- */
+    #nav{
+        display: flex;
+        flex-wrap: nowrap;
+        min-height: 50px;
+        max-height: 10vw;
+        background-color:transparent;
+        /* background: linear-gradient(to bottom,darkslateblue 20%,blue); */
+        color:wheat;
+
+        
+        position:relative;
+        z-index:0;
+
+    }
+    #nav::before{
+        content:"";
+        position: absolute;
+        inset:0;
+        background-color:rgba(0, 19, 80, 0.996);
+        backdrop-filter: blur(12px) saturate(80%);
+        
+        z-index: -2;
+
+    }
+    
 </style>
 
 <body>
     <div id="nav">
-        <h1>This is nav bar</h1>
+        <h1>Explore Biblyie world</h1>
+
     </div>
     <div id="main-tag-scroll">
         <button id="scrollL">
@@ -316,12 +410,12 @@
                     return;
                 }
                 const pickedTag = tagButton.querySelector("h3").textContent;
-                tagButton.style.backgroundColor = "green";
-                tagButton.style.color = "white";
+                tagButton.style.backgroundColor = "red";
+                tagButton.style.color = "blue";
                 setTimeout(() => {
-                    tagButton.style.backgroundColor = "#8a2be2";
+                    tagButton.style.backgroundColor = "rgb(183, 182, 186)";
                     tagButton.style.color = "black";
-                }, 300)
+                }, 200)
                 let response = await fetch("http://localhost:3000/bookRcmndd");
                 let fetchedBooks = await response.json();
                 let broughtBook=fetchedBooks;
