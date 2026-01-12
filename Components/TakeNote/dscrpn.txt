@@ -22,3 +22,35 @@ Requirement (advanced)
 
 ---------------------------------------- ---------
 ------------------------------------------ -----
+
+  background: #f2eeee;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+ 
+
+ .bookcaseflex {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.bookframe {
+  
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bookframe:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}

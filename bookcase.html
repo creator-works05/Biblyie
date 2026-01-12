@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <style>
-    
-    
     body {
         margin: 0;
+        background: linear-gradient(to bottom, rgba(82, 132, 212, 0.897) 0%, rgb(47, 98, 174) 30%);
+        backdrop-filter: blur(20px) brightness(100%);
     }
 
     * {
@@ -29,33 +29,28 @@
 
     }
 
+
     .bookcaseflex {
-        display: flex;
-        flex-wrap: wrap;
-        /* background-color: RED; */
-        min-height: 99vh;
-        max-height: max-content;
-        min-width: 30vw;
-        align-items: flex-start;
-        grid-area: "main";
-        justify-content:flex-start;
-        padding-top: 20px;
-        padding-left: 20px;
-        /* background: linear-gradient(to bottom, darkslategray 60% ,rgb(15, 28, 28)); */
-        gap:20px;
-        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        border: 1px solid rgb(0, 3, 205);
+        border-top: 1px;
+        align-content: flex-start;
+
+        grid-area: main;
+        padding: 20px;
         position: relative;
         z-index: 0;
-        
-
-        
     }
-    .bookcaseflex::before{
-        content:"";
-        position:absolute;
+
+
+    .bookcaseflex::before {
+        content: "";
+        position: absolute;
         inset: 0;
         z-index: -1;
-        background:linear-gradient(to bottom,rgba(82, 132, 212, 0.897) 0%, rgb(47, 98, 174) 30%);
+        background: linear-gradient(to bottom, rgba(82, 132, 212, 0.897) 0%, rgb(47, 98, 174) 30%);
         backdrop-filter: blur(20px) brightness(50%);
     }
 
@@ -64,13 +59,38 @@
         /* background-color: cadetblue; */
         /* position: static; */
         /* z-index: -1; */
-        position: static;
+        position: relative;
+        z-index: 0;
     }
+
+    .blank::after,
+    .blank::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+
+    }
+
+    .blank::before {
+        z-index: -2;
+        /* background: rgba(103, 103, 7, 0.882); */
+        /* background: rgba(0, 0, 0, 0.408); */
+        backdrop-filter: blur(20px);
+    }
+
+    .blank::after {
+        z-index: -1;
+        /* background: linear-gradient(to bottom, rgba(102, 143, 247, 0.971) 0%, rgba(255, 96, 96, 0.518) 50%); */
+        backdrop-filter: blur(20px) saturate(80%);
+
+    }
+
 
     .blank>div {
         position: sticky;
-        background-color: rgb(0, 0, 0);
-        height: 90vh;
+        background-color: transparent;
+        height: 100vh;
         min-width: 50px;
         max-width: 15vw;
         top: 22px;
@@ -81,12 +101,32 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: 5vw;
+        gap: 2vw;
         padding-top: 3vw;
         padding-bottom: 3vw;
+        box-shadow: 6px 0px 0px black;
 
 
     }
+
+    /* .blank>div::before{
+        content:"";
+        position: absolute;
+        inset:0;
+        z-index: -2;
+        background:linear-gradient(to bottom,rgba(112, 2, 2, 0.468) 0%, transparent 95% );
+        backdrop-filter:blur(20px) brightness(150%);
+
+    }
+    .blank>div::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index: -1;
+        background:linear-gradient(to bottom,  rgba(25, 2, 180, 0.268) 0%, transparent 95%);
+        backdrop-filter:blur(20px);
+
+    } */
 
     #main-tag-scroll {
         position: sticky;
@@ -96,11 +136,11 @@
         flex-wrap: wrap;
         /* width: 100%; */
         z-index: 6;
-        
+
 
 
     }
-   
+
 
     .tag-scroll {
         display: flex;
@@ -111,12 +151,12 @@
         flex: 1;
         justify-content: start;
         /* background:black; */
-        
+
 
 
     }
-    
-   
+
+
 
     #main-tag-button-grid {
         display: grid;
@@ -124,14 +164,14 @@
         grid-auto-columns: max-content;
         gap: 8px;
         /* background-color: rgb(0, 0, 79); */
-        
+
 
     }
-    
+
     #main-tag-button-grid>div {
         background-color: rgb(183, 182, 186);
-        border: 2px solid blueviolet;
-        border: 3px;
+        border: 2px solid rgb(129, 0, 0);
+        border-radius: 4px;
         width: 500px;
         display: flex;
         flex-direction: column;
@@ -154,27 +194,47 @@
         min-width: 50px;
         color: white;
         max-width: 10vw;
-        border:0; 
+        border: 0;
         z-index: 0;
 
     }
-    #scrollR::after{
-        content:"";
+
+    #scrollR::after {
+        content: "";
         position: absolute;
         inset: 0;
         right: 0px;
         bottom: -2px;
         top: -2px;
         left: -70px;
-        background:linear-gradient(to left,indigo 47px,rgb(0, 0, 0) 48px,rgba(0, 0, 0, 0.726) 59px,rgba(0, 0, 0, 0.212) 80%,transparent 100%);
-        border:0;
+        background: linear-gradient(to left, rgb(7, 1, 78) 47px, rgb(0, 0, 0) 48px, rgba(0, 0, 0, 0.726) 59px, rgba(0, 0, 0, 0.212) 80%, transparent 100%);
+        border: 0;
         z-index: -1;
     }
 
     #scrollL {
         min-width: 50px;
         max-width: 10vw;
+        position: relative;
+        z-index: 0;
+        background-color: transparent;
+        border: 0;
+        color: white;
     }
+
+    #scrollL::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        right: -70px;
+        bottom: -2px;
+        top: -2px;
+        left: 0px;
+        background: linear-gradient(to right, rgb(7, 1, 78) 47px, rgb(0, 0, 0) 48px, rgba(0, 0, 0, 0.726) 59px, rgba(0, 0, 0, 0.212) 80%, transparent 100%);
+        border: 0;
+        z-index: -1;
+    }
+
 
     .random {
         height: 70vw;
@@ -182,15 +242,47 @@
 
     .blank-sticky>button {
 
-        min-width: 200px;
-        min-height: 1vw;
-        height: 20%;
-        background-color: rgb(217, 217, 217);
+        min-width: 90%;
+
+        min-height: 2%;
+        /* height: 20%; */
+        background-color: transparent;
         flex-shrink: 0;
+        color: black;
+        font-size: 1rem;
+        font-weight: bolder;
         text-align: center;
         vertical-align: middle;
         border-radius: 40px;
+        position: relative;
+        box-shadow: 1px 0px 10px rgb(0, 0, 0), -1px 0px 10px rgb(142, 142, 142);
+        /* border: 1px solid black; */
+        z-index: 0;
 
+
+    }
+
+    .blank-sticky>button::after,
+    .blank-sticky>button::before {
+        content: "";
+        position: absolute;
+        border-radius: 40px;
+        inset: 0;
+    }
+
+    .blank-sticky>button::before {
+        z-index: -2;
+        /* background:rgb(255, 255, 4); */
+        /* background:rgb(27, 149, 231); */
+        background: rgba(0, 6, 9, 0.558);
+        background: rgba(222, 222, 222, 0.686);
+        backdrop-filter: blur(100px);
+    }
+
+    .blank-sticky>button::after {
+        z-index: -1;
+        background: rgba(87, 157, 58, 0.518);
+        backdrop-filter: blur(20px);
 
     }
 
@@ -198,36 +290,37 @@
         display: none;
     }
 
+
+
     .book-frame {
-        display: grid;
-        max-width: 350px;
-        min-width: 150px;
-        aspect-ratio: 3/3.5;
-        border: 2px solid black;
-        grid-auto-flow: row;
-        grid-auto-rows: auto;
-        align-items: center;
+        background: wheat;
+        /* background:rgba(245, 222, 179, 0.292); */
+        border-radius: 8px;
+        padding: 10px;
         color: black;
+        min-height: 260px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
         justify-items: center;
-        background:rgb(79, 156, 152);
-        /* background:rgb(245, 222, 179); */
-        backdrop-filter: brightness(120%);
-        flex-grow: 1;
+        align-items: center;
+        align-items: center;
+        border: 1px solid rgb(30, 169, 255);
+        filter: brightness(80%);
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.599), -3px -2px 8px rgb(162, 157, 157);
+
         position: relative;
         z-index: 0;
-        border: 5px solid rgba(124, 241, 236, 0.896);
-        /* outline: 5px solid rgba(191, 195, 195, 0.779); */
-        border-radius: 6px;
-        
     }
-    .book-frame::before{
-        content:"";
+
+    .book-frame::before {
+        content: "";
         inset: 0;
         position: absolute;
         /* background:linear-gradient(to right,rgba(0, 0, 0, 0.416) 0%,transparent 2% ),
                 linear-gradient(to left,rgba(0, 0, 0, 0.416) 0%,transparent 2% ),
                 linear-gradient(to top,rgba(0, 0, 0, 0.416) 0%,transparent 2% ),
                 linear-gradient(to bottom,rgba(0, 0, 0, 0.416) 0%,transparent 2% ); */
+        /* background: wheat; */
         z-index: -1;
     }
 
@@ -260,32 +353,39 @@
     .forBookIdFetch {
         display: none;
     }
+
     /* -----------------------------------------------NAV CSS---------------------- */
-    #nav{
+    #nav {
         display: flex;
         flex-wrap: nowrap;
         min-height: 50px;
         max-height: 10vw;
-        background-color:transparent;
+        background-color: transparent;
         /* background: linear-gradient(to bottom,darkslateblue 20%,blue); */
-        color:wheat;
+        color: wheat;
 
-        
-        position:relative;
-        z-index:0;
+
+        position: relative;
+        z-index: 0;
 
     }
-    #nav::before{
-        content:"";
+
+    #nav::before {
+        content: "";
         position: absolute;
-        inset:0;
-        background-color:rgba(0, 19, 80, 0.996);
+        inset: 0;
+        background-color: rgba(0, 19, 80, 0.996);
         backdrop-filter: blur(12px) saturate(80%);
-        
+
         z-index: -2;
 
     }
-    
+
+    .button-long-effect {
+        background:black;
+        color: wheat;
+
+    }
 </style>
 
 <body>
@@ -295,7 +395,7 @@
     </div>
     <div id="main-tag-scroll">
         <button id="scrollL">
-            < </button>
+            << </button>
                 <div class="tag-scroll">
                     <div id="main-tag-button-grid">
                         <div class="tag-button helloBtnTag">
@@ -305,32 +405,13 @@
 
                     </div>
                 </div>
-                <button id="scrollR">></button>
+                <button id="scrollR">>></button>
     </div>
     <div class="assign-book-grid">
         <div class="blank">
             <div class="blank-sticky">
 
-                <button>
-                    <p>label</p>
-                    <h5 class="side-inside-button">whole id</h5>
-                </button>
-                <button>
-                    <p>label</p>
-                    <h5 class="side-inside-button">whole id</h5>
-                </button>
-                <button>
-                    <p>label</p>
-                    <h5 class="side-inside-button">whole id</h5>
-                </button>
-                <button>
-                    <p>label</p>
-                    <h5 class="side-inside-button">whole id</h5>
-                </button>
-                <button>
-                    <p>label</p>
-                    <h5 class="side-inside-button">whole id</h5>
-                </button>
+
 
             </div>
         </div>
@@ -418,8 +499,8 @@
                 }, 200)
                 let response = await fetch("http://localhost:3000/bookRcmndd");
                 let fetchedBooks = await response.json();
-                let broughtBook=fetchedBooks;
-                fetchedBooksTop=broughtBook;
+                let broughtBook = fetchedBooks;
+                fetchedBooksTop = broughtBook;
                 console.log(broughtBook)
                 let wholeTagRes = await fetch("http://localhost:3000/addedWholeTag");
                 let wholeTagGet = await wholeTagRes.json();
@@ -460,7 +541,7 @@
                         let splitWhole = wholeTagGet[i].comboTag.split("#");
                         if ("#" + splitWhole[1] === pickedTag) {
                             blankSticky.innerHTML += `
-                                <button>
+                                <button class="sub-tag-button">
                                     <p>${splitWhole[2]}</p>
                                     <h5 class="side-inside-button">${wholeTagGet[i].comboTag}</h5>
                                     </button>`;
@@ -496,22 +577,22 @@
             })
         }
         // ---------------------------------sidebar control---------------
-            let bookcaseflex = document.querySelector(".bookcaseflex")
+        let bookcaseflex = document.querySelector(".bookcaseflex")
 
-            let blankSticky = document.querySelector(".blank-sticky");
-            blankSticky.addEventListener("click",async (e)=>{
+        let blankSticky = document.querySelector(".blank-sticky");
+        blankSticky.addEventListener("click", async (e) => {
 
-                let currentButton=e.target.closest("button");
-                if(!currentButton)return;
-                let response = await fetch("http://localhost:3000/bookRcmndd");
-                let fetchedBooks = await response.json();
-                bookcaseflex.innerHTML ="";
-                for (let i = 0; i < fetchedBooks.length; i++){
-                   let fromBtn= currentButton.querySelector("h5").textContent;
-                   let bookItem=fetchedBooks[i]
-                   
-                   if(fromBtn===bookItem.wholeTag){
-                     bookcaseflex.innerHTML += `<div class="book-frame">
+            let currentButton = e.target.closest("button");
+            if (!currentButton) return;
+            let response = await fetch("http://localhost:3000/bookRcmndd");
+            let fetchedBooks = await response.json();
+            bookcaseflex.innerHTML = "";
+            for (let i = 0; i < fetchedBooks.length; i++) {
+                let fromBtn = currentButton.querySelector("h5").textContent;
+                let bookItem = fetchedBooks[i]
+
+                if (fromBtn === bookItem.wholeTag) {
+                    bookcaseflex.innerHTML += `<div class="book-frame">
                         <h3>${bookItem.title}</h3>
                         <img src="${bookItem.imageurl}" alt="Image is not available now">
                         <p class="book-frame-desc">${bookItem.details} </p>
@@ -520,11 +601,38 @@
                         <p class="forBookIdFetch"> ${bookItem.id}</p>
                         
                         </div>`
-                   }
-
                 }
+
+            }
+        })
+        // -------------------------ADDING EFFECTS TO BUTTON-------------------------------------------
+        if (true) {
+            let dotBlankSticky = document.querySelector(".blank-sticky");
+            dotBlankSticky.addEventListener("click", (e) => {
+                // try {
+                    let allButton = dotBlankSticky.querySelectorAll("button");
+                    console.log(allButton)
+                    for (let i = 0; i < allButton.length; i++) {
+                        allButton[i].classList.add("button-long-effect")
+                        let isClass=allButton[i].classList.contains("button-long-effect")
+                        console.log(isClass)
+                    }
+                    console.log(e.target.closest(".button-long-effect"))   
+                    e.target.closest(".button-long-effect").style.border="3px solid red"
+                    e.target.closest(".button-long-effect").style.transform="scale(1.1)"
+                    e.target.closest(".button-long-effect").style.backgroundColor="black"
+
+                
+                    // }
+                // catch (e) {
+                    // console.log("error occured", e.message)
+                // }
+
             })
 
+
+
+        }
 
 
     </script>
