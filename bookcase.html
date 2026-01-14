@@ -163,20 +163,40 @@
         grid-auto-flow: column;
         grid-auto-columns: max-content;
         gap: 8px;
+        padding-left: 5px;
+        padding-right: 5px;
         /* background-color: rgb(0, 0, 79); */
 
 
     }
 
     #main-tag-button-grid>div {
-        background-color: rgb(183, 182, 186);
-        border: 2px solid rgb(129, 0, 0);
+        /* background-color: rgb(255, 251, 0); */
+        background: rgba(21, 7, 148, 0.492);
+        border: 1px solid rgba(17, 5, 129, 0.351);
         border-radius: 4px;
-        width: 500px;
+        /* width: 500px; */
+        min-width: 300px;
+        min-height:25px;
+        padding:0px 10px;
         display: flex;
         flex-direction: column;
+        font-weight:500 ;
         align-items: center;
+        /* position: relative;
+        z-index: 0; */
+        margin-top: 1px;
+        color:rgb(16, 0, 133);
+        color:rgb(246, 248, 159);
+        /* text-shadow: 1px 1px 20px rgb(0, 0, 0); */
+
     }
+    #main-tag-button-grid>div:hover{
+       
+        /* border:1px solid rgb(238, 238, 238); */
+        border-radius: 10px;
+    }
+    
 
     #main-tag-button-grid>div h2 {
         margin: 0;
@@ -209,6 +229,7 @@
         left: -70px;
         background: linear-gradient(to left, rgb(7, 1, 78) 47px, rgb(0, 0, 0) 48px, rgba(0, 0, 0, 0.726) 59px, rgba(0, 0, 0, 0.212) 80%, transparent 100%);
         border: 0;
+        pointer-events: none;
         z-index: -1;
     }
 
@@ -217,7 +238,7 @@
         max-width: 10vw;
         position: relative;
         z-index: 0;
-        background-color: transparent;
+        /* background-color: transparent; */
         border: 0;
         color: white;
     }
@@ -232,7 +253,8 @@
         left: 0px;
         background: linear-gradient(to right, rgb(7, 1, 78) 47px, rgb(0, 0, 0) 48px, rgba(0, 0, 0, 0.726) 59px, rgba(0, 0, 0, 0.212) 80%, transparent 100%);
         border: 0;
-        z-index: -1;
+        z-index:-1;
+        pointer-events: none;
     }
 
 
@@ -262,15 +284,15 @@
 
     }
 
-    .blank-sticky>button::after,
-    .blank-sticky>button::before {
+    .sub-tag-button::after,
+    .sub-tag-button::before {
         content: "";
         position: absolute;
         border-radius: 40px;
         inset: 0;
     }
 
-    .blank-sticky>button::before {
+    .sub-tag-button::before {
         z-index: -2;
         /* background:rgb(255, 255, 4); */
         /* background:rgb(27, 149, 231); */
@@ -279,7 +301,7 @@
         backdrop-filter: blur(100px);
     }
 
-    .blank-sticky>button::after {
+    .sub-tag-button::after {
         z-index: -1;
         background: rgba(87, 157, 58, 0.518);
         backdrop-filter: blur(20px);
@@ -381,9 +403,13 @@
 
     }
 
-    .button-long-effect {
-        background:black;
+    .blank-sticky> .button-long-effect {
+        background-color: rgb(80, 0, 0);
         color: wheat;
+        transform:scale(1.05);
+        box-shadow:0px -1px 10px rgba(201, 199, 199, 0.903),2px 2px 10px rgb(28, 28, 28);
+        /* border:2px solid rgb(161, 0, 0); */
+
 
     }
 </style>
@@ -491,17 +517,16 @@
                     return;
                 }
                 const pickedTag = tagButton.querySelector("h3").textContent;
-                tagButton.style.backgroundColor = "red";
-                tagButton.style.color = "blue";
+                tagButton.style.backgroundColor = "violet";
+                tagButton.style.color = "black";
                 setTimeout(() => {
-                    tagButton.style.backgroundColor = "rgb(183, 182, 186)";
-                    tagButton.style.color = "black";
+                    tagButton.style.backgroundColor = "rgba(21, 7, 148, 0.492)";
+                    tagButton.style.color = "rgb(246, 248, 159)";
                 }, 200)
                 let response = await fetch("http://localhost:3000/bookRcmndd");
                 let fetchedBooks = await response.json();
                 let broughtBook = fetchedBooks;
                 fetchedBooksTop = broughtBook;
-                console.log(broughtBook)
                 let wholeTagRes = await fetch("http://localhost:3000/addedWholeTag");
                 let wholeTagGet = await wholeTagRes.json();
                 if (pickedTag === "#All") {
@@ -572,7 +597,7 @@
                         }
 
                     }
-                    console.log(fetchedBooksTop)
+                    // console.log(fetchedBooksTop)
                 }
             })
         }
@@ -609,29 +634,38 @@
         if (true) {
             let dotBlankSticky = document.querySelector(".blank-sticky");
             dotBlankSticky.addEventListener("click", (e) => {
-                // try {
-                    let allButton = dotBlankSticky.querySelectorAll("button");
-                    console.log(allButton)
-                    for (let i = 0; i < allButton.length; i++) {
-                        allButton[i].classList.add("button-long-effect")
-                        let isClass=allButton[i].classList.contains("button-long-effect")
-                        console.log(isClass)
-                    }
-                    console.log(e.target.closest(".button-long-effect"))   
-                    e.target.closest(".button-long-effect").style.border="3px solid red"
-                    e.target.closest(".button-long-effect").style.transform="scale(1.1)"
-                    e.target.closest(".button-long-effect").style.backgroundColor="black"
 
-                
-                    // }
-                // catch (e) {
-                    // console.log("error occured", e.message)
-                // }
+                let allButton = dotBlankSticky.querySelectorAll("button");
+                // console.log(allButton)
+                let count = 0;
+
+                let target = e.target.closest(".sub-tag-button")
+                if (!target) return
+                for (let i = 0; i < allButton.length; i++) {
+
+                    allButton[i].classList.add("sub-tag-button")
+                    allButton[i].classList.remove("button-long-effect")
+                    if (target === allButton[i]) {
+                        allButton[i].classList.toggle("sub-tag-button")
+                        allButton[i].classList.toggle("button-long-effect")
+                        console.log(allButton[i])
+                    }
+                }
+
+
+
 
             })
 
 
 
+        }
+        if(true){
+            let leftButton=document.querySelector("#scrollL");
+            let scrollPart=document.querySelector("#main-tag-button-grid")
+            leftButton.addEventListener("click",(e)=>{
+             scrollPart.scrollTo({right:"20px",behavior:"smooth"})
+            })
         }
 
 
