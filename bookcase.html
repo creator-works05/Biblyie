@@ -177,26 +177,27 @@
         border-radius: 4px;
         /* width: 500px; */
         min-width: 300px;
-        min-height:25px;
-        padding:0px 10px;
+        min-height: 25px;
+        padding: 0px 10px;
         display: flex;
         flex-direction: column;
-        font-weight:500 ;
+        font-weight: 500;
         align-items: center;
         /* position: relative;
         z-index: 0; */
         margin-top: 1px;
-        color:rgb(16, 0, 133);
-        color:rgb(246, 248, 159);
+        color: rgb(16, 0, 133);
+        color: rgb(246, 248, 159);
         /* text-shadow: 1px 1px 20px rgb(0, 0, 0); */
 
     }
-    #main-tag-button-grid>div:hover{
-       
+
+    #main-tag-button-grid>div:hover {
+
         /* border:1px solid rgb(238, 238, 238); */
         border-radius: 10px;
     }
-    
+
 
     #main-tag-button-grid>div h2 {
         margin: 0;
@@ -212,7 +213,8 @@
     #scrollR {
         position: relative;
         min-width: 50px;
-        color: white;
+        color: rgb(255, 255, 0);
+        font-weight: 900;
         max-width: 10vw;
         border: 0;
         z-index: 0;
@@ -237,10 +239,11 @@
         min-width: 50px;
         max-width: 10vw;
         position: relative;
+        font-weight: 900;
         z-index: 0;
         /* background-color: transparent; */
         border: 0;
-        color: white;
+        color: rgb(255, 238, 0);
     }
 
     #scrollL::after {
@@ -253,7 +256,7 @@
         left: 0px;
         background: linear-gradient(to right, rgb(7, 1, 78) 47px, rgb(0, 0, 0) 48px, rgba(0, 0, 0, 0.726) 59px, rgba(0, 0, 0, 0.212) 80%, transparent 100%);
         border: 0;
-        z-index:-1;
+        z-index: -1;
         pointer-events: none;
     }
 
@@ -403,11 +406,13 @@
 
     }
 
-    .blank-sticky> .button-long-effect {
+    .blank-sticky>.button-long-effect {
         background-color: rgb(80, 0, 0);
-        color: wheat;
-        transform:scale(1.05);
-        box-shadow:0px -1px 10px rgba(201, 199, 199, 0.903),2px 2px 10px rgb(28, 28, 28);
+        background-color: #6bbaffc5;
+        /* color: wheat; */
+        color: rgb(0, 34, 187);
+        transform: scale(1.02);
+        box-shadow: 0px 0px 8px rgba(133, 133, 133, 0.903), 2px 2px 5px rgb(28, 28, 28);
         /* border:2px solid rgb(161, 0, 0); */
 
 
@@ -623,7 +628,7 @@
                         <p class="book-frame-desc">${bookItem.details} </p>
                         <p>₹ ${bookItem.currentprice}</p>
                         <h4 class="bookid-frame">${bookItem.wholeTag}</h4>
-                        <p class="forBookIdFetch"> ${bookItem.id}</p>
+                        <p class="forBookIdFetch">${bookItem.id}</p>
                         
                         </div>`
                 }
@@ -648,7 +653,6 @@
                     if (target === allButton[i]) {
                         allButton[i].classList.toggle("sub-tag-button")
                         allButton[i].classList.toggle("button-long-effect")
-                        console.log(allButton[i])
                     }
                 }
 
@@ -660,15 +664,43 @@
 
 
         }
-        if(true){
-            let leftButton=document.querySelector("#scrollL");
-            let scrollPart=document.querySelector("#main-tag-button-grid")
-            leftButton.addEventListener("click",(e)=>{
-             scrollPart.scrollTo({right:"20px",behavior:"smooth"})
+        if (true) {
+            let leftButton = document.querySelector("#scrollL");
+            let scrollPart = document.querySelector(".tag-scroll")
+            leftButton.addEventListener("click", (e) => {
+                console.log(scrollPart.clientWidth, "----", scrollPart.clientWidth * 0.30)
+                scrollPart.scrollBy({ left: scrollPart.clientWidth * 0.30, behavior: "smooth" })
+            })
+        }
+        if (true) {
+            let rightButton = document.querySelector("#scrollR");
+            let scrollPart = document.querySelector(".tag-scroll")
+            rightButton.addEventListener("click", (e) => {
+                console.log(scrollPart.clientWidth, "----", scrollPart.clientWidth * 0.30)
+                scrollPart.scrollBy({ left: -scrollPart.clientWidth * 0.30, behavior: "smooth" })
             })
         }
 
+        if (true) {
+            document.querySelector(".bookcaseflex").addEventListener("click", (e) => {
+                // window.localStorage.setItem("");
+                let target = e.target.closest(".book-frame");
 
+                if (!target) {
+                    console.log("no target element")
+                    return;
+                }
+                console.log("hello", target)
+                let getID =target.querySelector(".forBookIdFetch").textContent.trim();
+                // let getID =target.querySelector(".forBookIdFetch").textContent.split(" ");
+                // console.log(e.target.querySelector("h4"))
+                console.log(getID)
+                localStorage.setItem("bookClickID",getID)
+                window.location.href = "productview.html"
+
+
+            })
+        }
     </script>
 
 </body>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  #container {
+    width: 300px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border: 2px solid black;
+    padding: 10px;
+  }
+
+  .box {
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    margin-right: 10px;
+    background: lightblue;
+    border: 1px solid blue;
+    font-size: 24px;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+  }
+
+  button {
+    margin: 8px;
+    padding: 8px 12px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Scroll Demo: scrollBy() vs scrollTo()</h2>
+
+<div id="container">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+  <div class="box">6</div>
+</div>
+
+<!-- Buttons -->
+<button id="scrollByLeft">scrollBy Left (-100)</button>
+<button id="scrollByRight">scrollBy Right (+100)</button>
+<br>
+<button id="scrollToStart">scrollTo Start (0)</button>
+<button id="scrollToMiddle">scrollTo Middle (300)</button>
+<button id="scrollToEnd">scrollTo End</button>
+
+<script>
+  let container = document.getElementById("container");
+
+  // scrollBy LEFT
+  document.getElementById("scrollByLeft").addEventListener("click", () => {
+    container.scrollBy({ left: -100, behavior: "smooth" });
+  });
+
+  // scrollBy RIGHT
+  document.getElementById("scrollByRight").addEventListener("click", () => {
+    container.scrollBy({ left: 100, behavior: "smooth" });
+  });
+
+  // scrollTo START
+  document.getElementById("scrollToStart").addEventListener("click", () => {
+    container.scrollTo({ left: 0, behavior: "smooth" });
+  });
+
+  // scrollTo MIDDLE
+  document.getElementById("scrollToMiddle").addEventListener("click", () => {
+    container.scrollTo({ left: 300, behavior: "smooth" });
+  });
+
+  // scrollTo END
+  document.getElementById("scrollToEnd").addEventListener("click", () => {
+    container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
+  });
+</script>
+
+</body>
+</html>

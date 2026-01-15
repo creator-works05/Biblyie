@@ -15,7 +15,7 @@ if(!localStorage.getItem("genToken")){
 //INDEXpage scripts---------------------------------------------------------------------------
 // -------------------------------------------------AUTO SCROLL SETTING FOR BANNER----------------------
 const highlightRead = document.querySelector("#highlight-read");
-const hReadWidth = highlightRead.clientWidth;
+const hReadWidth = highlightRead.clientWidth; 
 let index = 0;
 setInterval(() => {
     index++;
@@ -136,7 +136,7 @@ if (true) {
                         <img alt="Book image" class="recommend-image" src="${obj.imageurl}">
                         <p class="recommend-img-title">${obj.title}</p>
                         <p class="description-for-rcmmnd">${obj.details}</p>
-                        <p class="recommend-click-id">${obj.id} </p>
+                        <p class="recommend-click-id">${obj.id}</p>
                         
                     </div>
                     </button>`
