@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <form id="cart-form">
+        <input type="text" placeholder="enter product id " name="bookid">
+        <input type="text" placeholder="enter book name " name="bookname">
+        <input type="text" placeholder="enter book count  " name="count">
+        <button id="cart-form-buton"> submit</button>
+
+    </form>
+
+    <!-- ---------------------------------------------------------------------------------- -->
+    <script>
+        // const genToken = localStorage.getItem("genToken")
+        // console.log(genToken);
+        document.querySelector("#cart-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            fetch(`http://localhost:3000/payLoadPurchase/mohahom73264`)
+                .then((response => {
+                    if (!response.ok) {
+                        throw new Error("response yielded an error")
+                    }
+                    return response.json()
+                }))
+                .then((record => {
+                    let random = Math.random() * 10
+                    if (record.cart.length > 20) {
+                        console.log("cart overflow")
+                    }
+                    record.cart.push({
+                        id:e.target.bookid.value,
+                        bookName:e.target.bookname.value,
+                        count:e.target.count.value
+
+
+                    })
+                    console.log("new",record)
+                    return fetch(`http://localhost:3000/payLoadPurchase/mohahom73264`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(record)
+
+                    })
+
+
+
+                }))
+                .then((response=>response.json()))
+                .then((data)=>{
+                    const items = data.cart.find(b=>b.id==="book0987")
+                    console.log(items)
+                    items.count=30;
+                    fetch(`http://localhost:3000/payLoadPurchase/mohahom73264`,{
+                        method:"PUT",
+                        headers:{"Content-Type":"application/json"},
+                        body:JSON.stringify(data)
+                    })
+                    
+                    e.target.reset();
+
+                })
+                .catch((e)=>{console.log(e.message);
+                })
+
+        })
+
+    </script>
+</body>
+
+</html>

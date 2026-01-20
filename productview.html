@@ -19,7 +19,6 @@
         * {
             box-sizing: border-box;
             margin: 0;
-            overflow: hidden;
         }
 
         body {
@@ -29,7 +28,8 @@
 
         #auto-row-container {
             display: grid;
-            width: 100vw;
+            width: 100%;
+            min-height: fit-content;
             grid-auto-flow: row;
             grid-auto-rows: max-content;
             overflow: hidden;
@@ -61,7 +61,7 @@
             text-shadow:
                 -4px 0px 0 rgb(0, 92, 0),
                 -4.5px 0px 0 orange;
-           
+
         }
 
         #nav span {
@@ -69,17 +69,17 @@
             /* vertical-align: top; */
             /* or middle */
             text-decoration: none;
-            
+
             text-decoration: underline;
             text-decoration-color: yellow;
             color: lightblue;
             text-shadow: 2px 0px 0 rgb(0, 0, 0);
             font-style: italic;
             letter-spacing: 1.5px;
-            text-underline-offset:3px;
+            text-underline-offset: 3px;
             text-decoration-thickness: 8px;
             text-decoration-style: dotted;
-            
+
         }
 
         #nav h3 {
@@ -119,7 +119,7 @@
         }
 
         #the-content-need img {
-            width: 40vw;
+            max-width: 40vw;
             aspect-ratio: 16/9;
             margin-top: var(--margin-between);
             /* margin-top: 1.4rem; */
@@ -144,18 +144,39 @@
 
             margin-top: var(--margin-between);
             border-radius: 0 0 6px 6px;
+            max-height: 50vh;
+            min-width: 40vh;
+            overflow-y: auto;
+            position: relative;
 
         }
 
         #event-section h2 {
             justify-self: center;
+            position: sticky;
+            width: 100%;
+            text-align: center;
+            top: 0%;
+            background-color: white;
+            padding: 0 auto;
         }
+
 
         #event-section p {
             padding-left: 20px;
             margin-bottom: var(--margin-between);
             font-size: larger;
             font-weight: 600;
+        }
+
+        #event-section h3 {
+            padding-left: 20px;
+            margin-bottom: var(--margin-between);
+            font-weight: 700;
+            font-size: 1.5rem;
+            position: sticky;
+            top: 7%;
+            background-color: white;
         }
 
         #purchase-div {
@@ -175,6 +196,53 @@
 
 
 
+
+        }
+
+        .purchase-div2 button {
+            min-height: 9vh;
+            min-width: 25vh;
+            color: white;
+            background-color: black;
+            border-radius: 9px;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+
+
+
+
+        }
+
+        .purchase-div2 {
+            display: flex;
+            width: 50%;
+            margin: 0 auto;
+            margin-left: 49vw;
+            justify-content: center;
+            gap: 2vw;
+        }
+
+        .for-random-div {
+            display: block;
+
+            width: 100%;
+            /* height: 400px; */
+            /* background-color: red; */
+
+        }
+
+        .cart-alert {
+            position: fixed;
+            min-width: 150px;
+            padding: 2px;
+            border: 1px solid indigo;
+            background: rgb(255, 224, 224);
+            color: black;
+            font-size: medium;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            bottom: 10%;
         }
     </style>
 </head>
@@ -185,26 +253,37 @@
             <p>Bibl<span id="text-section">yie</span></p>
             <h3>Biblyie knows you're here :)</h3>
         </div>
+
+        <section class="display-book">
+
+        </section>
+    </div>
+    <script>
+        let currentBookId = localStorage.getItem("bookClickID").trim();
+        let cUser = ""
+        let bookName = ""
+        if (true) {
+            document.querySelector(".display-book").innerHTML = `
         <div id="content-container">
             <div id="the-content-need">
                 <img src="" alt="image">
                 <div id="event-section">
-                    <!-- <h2>It is Byblyie back pack for you </h2>
-                    <p>Title</p>
-                    <p>bookID</p>
-                    <p>price</p>
-                    <p>current price</p>
-                    <p>current price</p>
-                    <p>stock and status</p>
-                    <p>tag</p>
-                    <div id="purchase-div"><button>Purchase</button><button>Add to cart</button></div> -->
-
+                   
                 </div>
             </div>
 
         </div>
-    </div>
-    <script>
+        `;
+            let newRandom = document.createElement("div");
+            console.log(newRandom)
+            newRandom.classList.add("for-random-div")
+            document.querySelector("#auto-row-container").appendChild(newRandom)
+            document.querySelector(".for-random-div").innerHTML = `
+                    <div class="purchase-div2"><button type="button" >Purchase</button><button type="button" class="add-cart">Add to cart</button></div> 
+        
+        `
+        }
+
         if (true) {
             let getID = localStorage.getItem("bookClickID");
             console.log(getID);
@@ -213,23 +292,114 @@
                 let Data = await response.json();
                 console.log(Data)
                 let EventSection = document.querySelector("#the-content-need")
-
+                bookName = Data.title
                 EventSection.innerHTML = `<img src="${Data.imageurl}" alt="image">
                 <div id="event-section">
                     <h2>This is Biblyie back pack for you </h2>
-                    <p> ${Data.title}</p>
+                    <H3> ${Data.title}</h3>
                     <p>Book ID: ${Data.id}</p>
                     <p>MRP: ${Data.actualprice}</p>
                     <p>Byblyie price :  ${Data.currentprice}</p>
                     <p>Stock:  ${Data.stockcount}</p>
                     <p>Info:  ${Data.details}</p>
-                    <p>Category:  ${Data.wholeTag}</p>
-                    <div id="purchase-div"><button>Purchase</button><button>Add to cart</button></div>`
+                    <p>Category:  ${Data.wholeTag}</p>`;
+                // <div id="purchase-div"><button type="button">Purchase</button><button type="button" class="add-cart" >Add to cart</button></div>
                 console.log(Data.imageurl)
 
             }
             getTheClick()
         }
+
+        //-------------------------------ADD CART ACTION----------------------------------------------------
+
+        if (true) {
+            let count = 1;
+            let newCartItem;
+            let generatedToken = localStorage.getItem("genToken")
+            let cartAlert = document.createElement("div");
+            document.body.appendChild(cartAlert);
+            function showCartAlert(){
+                  setTimeout(() => {
+                            cartAlert.style.display = "none"
+                            document.querySelector(".add-cart").disabled = false
+                        },8000)
+
+
+                        cartAlert.style.display = "inline-block"
+                        document.querySelector(".add-cart").disabled = true
+            }
+            document.querySelector(".add-cart").addEventListener("click", (e) => {
+                e.preventDefault()
+                fetch(`http://localhost:3000/loggedUser/${generatedToken}`)
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(currentUser => {
+                        cUser = currentUser.user.trim();
+                        return cUser
+                    })
+                    .then(cUser => {
+                        return fetch(`http://localhost:3000/payLoadPurchase/${cUser}`)
+                    })
+                    .then(response => {
+                        return response.json()
+                    })
+                    .then(record => {
+                        if (record.cart.length > 20) {
+                            console.log("Cart Overflow");
+                            return
+
+                        }
+
+                        let mulCheck = record.cart.some((rcd, _) => {
+                            return rcd.id.trim() === currentBookId
+                        })
+
+
+                        if (!mulCheck) {
+                            newCartItem = {
+                                id: currentBookId,
+                                bookName: bookName,
+                                count: 1
+                            }
+                            console.log("success new add")
+                            record.cart.push(newCartItem)
+                            return fetch(`http://localhost:3000/payLoadPurchase/${cUser}`, {
+                                method: "PUT",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(record)
+
+                            })
+                        }
+                        else {
+                            let countChange = record.cart.find(b => b.id === currentBookId)
+
+                            //    countChange.count=8;
+                            countChange.count = Number(countChange.count) + 1;
+                            console.log("success", record, countChange.count)
+                            return fetch(`http://localhost:3000/payLoadPurchase/${cUser}`, {
+                                method: "PUT",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(record)
+
+                            })
+                        }
+
+                    })
+                    .then(() => {
+
+                        console.log("cart message");
+                        cartAlert.classList.add("cart-alert")
+                        cartAlert.innerHTML = `<p>Item added to cart.</p>`
+                        showCartAlert()
+                      
+                    })
+                    .catch(error => console.log("Causes error while adding to cart", error.message))
+
+            })
+
+        }
+
     </script>
 </body>
 

@@ -1,0 +1,18 @@
+ <div id="content-container">
+            <div id="the-content-need">
+                <img src="" alt="image">
+                <div id="event-section">
+                    <!-- <h2>It is Byblyie back pack for you </h2>
+                    <p>Title</p>
+                    <p>bookID</p>
+                    <p>price</p>
+                    <p>current price</p>
+                    <p>current price</p>
+                    <p>stock and status</p>
+                    <p>tag</p>
+                    <div id="purchase-div"><button>Purchase</button><button>Add to cart</button></div> -->
+
+                </div>
+            </div>
+
+        </div>
