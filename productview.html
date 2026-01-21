@@ -119,7 +119,8 @@
         }
 
         #the-content-need img {
-            max-width: 40vw;
+            width: 40vw;
+            /* height: auto; */
             aspect-ratio: 16/9;
             margin-top: var(--margin-between);
             /* margin-top: 1.4rem; */
@@ -212,6 +213,10 @@
 
 
         }
+        .purchase-div2 button:active{
+            background:rgb(9, 162, 238);
+            color: black;
+        }
 
         .purchase-div2 {
             display: flex;
@@ -244,6 +249,12 @@
             display: none;
             bottom: 10%;
         }
+        .goto-cart{
+            align-self: center;
+            border-radius: 6px;
+            background: red;
+            color: white;
+        }
     </style>
 </head>
 
@@ -251,6 +262,7 @@
     <div id="auto-row-container">
         <div id="nav">
             <p>Bibl<span id="text-section">yie</span></p>
+            <button type="button" class="goto-cart">Go to cart</button>
             <h3>Biblyie knows you're here :)</h3>
         </div>
 
@@ -301,12 +313,13 @@
                     <p>MRP: ${Data.actualprice}</p>
                     <p>Byblyie price :  ${Data.currentprice}</p>
                     <p>Stock:  ${Data.stockcount}</p>
-                    <p>Info:  ${Data.details}</p>
-                    <p>Category:  ${Data.wholeTag}</p>`;
-                // <div id="purchase-div"><button type="button">Purchase</button><button type="button" class="add-cart" >Add to cart</button></div>
+                    <p>Category:  ${Data.wholeTag}</p>
+                    <p>Info:  ${Data.details}</p>`;
                 console.log(Data.imageurl)
 
+
             }
+
             getTheClick()
         }
 
@@ -318,17 +331,20 @@
             let generatedToken = localStorage.getItem("genToken")
             let cartAlert = document.createElement("div");
             document.body.appendChild(cartAlert);
-            function showCartAlert(){
-                  setTimeout(() => {
-                            cartAlert.style.display = "none"
-                            document.querySelector(".add-cart").disabled = false
-                        },8000)
+            function showCartAlert() {
+                setTimeout(() => {
+                    cartAlert.style.display = "none"
+                    document.querySelector(".add-cart").disabled = false
+                }, 5000)
 
 
-                        cartAlert.style.display = "inline-block"
-                        document.querySelector(".add-cart").disabled = true
+                cartAlert.style.display = "inline-block"
+                document.querySelector(".add-cart").disabled = true
             }
             document.querySelector(".add-cart").addEventListener("click", (e) => {
+                if (!e.target.classList.contains("add-cart")) {
+                    return;
+                }
                 e.preventDefault()
                 fetch(`http://localhost:3000/loggedUser/${generatedToken}`)
                     .then(response => {
@@ -392,12 +408,19 @@
                         cartAlert.classList.add("cart-alert")
                         cartAlert.innerHTML = `<p>Item added to cart.</p>`
                         showCartAlert()
-                      
+                       
+
                     })
                     .catch(error => console.log("Causes error while adding to cart", error.message))
 
             })
 
+        }
+        if(true){
+            document.querySelector(".goto-cart").addEventListener("click",()=>{
+                
+
+            })
         }
 
     </script>
