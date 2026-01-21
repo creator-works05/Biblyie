@@ -686,19 +686,24 @@
       "id": "amalama58021",
       "cart": [
         {
-          "id": "",
-          "bookName": "",
-          "count": ""
-        },
-        {
-          "id": "",
-          "bookName": "",
-          "count": ""
-        },
-        {
           "id": "balyaihk77052",
           "bookName": "balyakaala sakhi",
-          "count": 325
+          "count": 20
+        },
+        {
+          "id": "book33ko70364",
+          "bookName": "book 3",
+          "count": 2
+        },
+        {
+          "id": "mathilak75952",
+          "bookName": "mathilukal",
+          "count": 1
+        },
+        {
+          "id": "Patheira50228",
+          "bookName": "Pathemaari",
+          "count": 1
         }
       ],
       "currentPurchace": null,

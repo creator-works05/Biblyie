@@ -391,7 +391,8 @@
                             let countChange = record.cart.find(b => b.id === currentBookId)
 
                             //    countChange.count=8;
-                            countChange.count = Number(countChange.count) + 1;
+                            // countChange.count = Number(countChange.count) + 1;
+                            countChange.count = Number(countChange.count)<20?Number(countChange.count) + 1:20;
                             console.log("success", record, countChange.count)
                             return fetch(`http://localhost:3000/payLoadPurchase/${cUser}`, {
                                 method: "PUT",
@@ -416,12 +417,7 @@
             })
 
         }
-        if(true){
-            document.querySelector(".goto-cart").addEventListener("click",()=>{
-                
-
-            })
-        }
+        
 
     </script>
 </body>

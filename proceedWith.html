@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            background: rgb(153, 119, 119);
+
+        }
+
+        #auto-row-container {
+            display: grid;
+            width: 100%;
+            min-height: fit-content;
+            grid-auto-flow: row;
+            grid-auto-rows: max-content;
+            overflow: hidden;
+        }
+
+        #nav {
+            display: flex;
+            height: 12vh;
+            width: 100%;
+            background-color: rgb(255, 195, 195);
+            color: rgb(0, 0, 0);
+            justify-content: space-between;
+            position:sticky;
+            top:0;
+        }
+
+        #nav p {
+            font-size: 3rem;
+            margin: 0;
+            /* font-family: var(--logo-font); */
+            letter-spacing: -1px;
+            font-weight: 700;
+            padding-left: 2rem;
+            text-decoration: overline;
+            text-underline-offset: 1px;
+            padding-top: 1.2rem;
+            text-decoration-color: yellow;
+            text-decoration-color: rgb(0, 0, 6);
+            color: rgb(255, 234, 0);
+            color: rgb(165, 14, 14);
+            text-shadow:
+                -4px 0px 0 orange;
+            text-shadow:
+                -4px 0px 0 rgb(0, 92, 0),
+                -4.5px 0px 0 orange;
+
+        }
+
+        #nav span {
+            /* display: inline-block; */
+            /* vertical-align: top; */
+            /* or middle */
+            text-decoration: none;
+
+            text-decoration: underline;
+            text-decoration-color: yellow;
+            text-decoration-color: rgb(2, 0, 143);
+            color: lightblue;
+            color: rgb(1, 169, 225);
+            text-shadow: 2px 0px 0 rgb(0, 0, 0);
+            font-style: italic;
+            letter-spacing: 1.5px;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 8px;
+            text-decoration-style: dotted;
+
+        }
+
+        #nav h3 {
+            font-size: clamp(1.4rem, 2vh, 2rem);
+            color: rgb(147, 5, 5);
+            margin-right: 2rem;
+            align-self: center;
+            font-style: italic;
+
+        }
+/* -----------------------------CART DISPLAY SECTION--------------------------------------- */
+#add-cart-display{
+    width: 94%;
+    height:88vh;
+    margin: 0 auto;
+    /* border: 1px solid white; */
+    margin-top: 3px;
+    background:rgba(255, 255, 255, 0.156);
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-y:auto;
+    align-items: center;
+    padding-top: 5px;
+    gap:4px;
+    padding-bottom: 200px;
+
+}
+#add-cart-display > h1{
+   align-self: center;
+}
+.cart-item-div{
+    display: flex;
+    width: 98%;
+    border: 2px solid black;
+    border-radius: 6px;
+    background: white;
+    height:15vh;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    flex-shrink:0;
+    align-items: center;
+    /* margin: 0 auto; */
+}
+.cart-item-div img{
+    height:90%;
+    aspect-ratio: 16/9;
+    border: 2px solid red;
+}
+
+    </style>
+</head>
+<body>
+     <div id="auto-row-container">
+        <div id="nav">
+            <p>Bibl<span id="text-section">yie</span></p>
+            <h3>Biblyie knows you're here :)</h3>
+        </div>
+      <div id="cart-section">
+          <div id="add-cart-display">
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+            <div class="cart-item-div">
+                <img src="" alt="image">
+                <h1>title</h1>
+                <p>price</p>
+            </div>
+           
+        </div>
+      </div>
+    </div>   
+</body>
+    <!-- ------------------------------------------------------------------------------------------------------ -->
+     <script>
+        let bookArray;
+        let currentUser;
+        let rcmndArray;
+        let genToken=localStorage.getItem("genToken")
+        genToken=genToken.trim()
+        
+        
+        // ----------------------------------ADDING ITEMS INTO CART----------------------------------
+       fetch(`http://localhost:3000/loggedUser`)
+       .then(res=>res.json())
+       .then(data=>{
+        const theLoc=data.find((d,i)=>d.id===genToken)
+        currentUser=theLoc.user;
+        return fetch(`http://localhost:3000/payLoadPurchase/${currentUser}`)
+       })
+       .then(res=>res.json())
+       .then(data=>{
+        bookArray=data.cart
+        console.log(bookArray);
+        if(!bookArray||bookArray.length===0){
+            document.querySelector("#add-cart-display").innerHTML=`
+             <h1> Your cart is Empty</h1>`;
+             return
+        }
+        return fetch(`http://localhost:3000/bookRcmndd`)
+       })
+       .then(res=>res.json())
+       .then(data=>{
+        rcmndArray=data
+        // console.log(data);
+        //  document.querySelector("#add-cart-display").innerHTML=``;
+        for(let i=0;i<bookArray.length;i++){
+            let fromShelf=rcmndArray.find((d,index)=>{
+                return d.id===bookArray[i].id
+            })
+            // console.log(fromShelf)
+            //  document.querySelector("#add-cart-display").innerHTML+=`
+            //  `
+        }
+        
+       })
+       .catch(error=>console.log(error))
+        
+     </script>
+</html>
