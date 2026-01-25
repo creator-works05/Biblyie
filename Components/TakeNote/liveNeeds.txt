@@ -1,0 +1,60 @@
+for proceedWith.html
+_________________________
+ We need one Cart-Item-Romove Button, Count-Set-Button (Optional) and,
+ Item should be disabled from being selected for purchase if it is out of Stock
+
+ Item div should contain,
+   * Image
+   * Item Title
+   * BookID
+   "payLoadPurchase": [
+    {
+      "id": "amalama58021",
+      "cart": [
+        {
+          "id": "balyaihk77052",
+          "bookName": "balyakaala sakhi",
+          "count": 20
+        },
+        {
+          "id": "book33ko70364",
+          "bookName": "book 3",
+          "count": 2
+        },
+        {
+          "id": "mathilak75952",
+          "bookName": "mathilukal",
+          "count": 1
+        },
+        {
+          "id": "Patheira50228",
+          "bookName": "Pathemaari",
+          "count": 1
+        }
+      ],
+      "currentPurchace": null,
+      "allOrders": []
+    },
+    {
+      "id": "mohahom73264",
+      "cart": [
+        {
+          "id": "book0987",
+          "bookName": "Vellarippravinte Changathi",
+          "count": 30
+        },
+        {
+          "id": "2255",
+          "bookName": "gf",
+          "count": "4"
+        },
+        {
+          "id": "7783",
+          "bookName": "ih sduighf",
+          "count": "6"
+        }
+      ],
+      "currentPurchace": null,
+      "allOrders": []
+    }
+  ]

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +33,9 @@
             background-color: rgb(255, 195, 195);
             color: rgb(0, 0, 0);
             justify-content: space-between;
-            position:sticky;
-            top:0;
+            position: sticky;
+            top: 0;
+            overflow: hidden;
         }
 
         #nav p {
@@ -86,151 +88,329 @@
             font-style: italic;
 
         }
-/* -----------------------------CART DISPLAY SECTION--------------------------------------- */
-#add-cart-display{
-    width: 94%;
-    height:88vh;
-    margin: 0 auto;
-    /* border: 1px solid white; */
-    margin-top: 3px;
-    background:rgba(255, 255, 255, 0.156);
-    display:flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    overflow-y:auto;
-    align-items: center;
-    padding-top: 5px;
-    gap:4px;
-    padding-bottom: 200px;
 
-}
-#add-cart-display > h1{
-   align-self: center;
-}
-.cart-item-div{
-    display: flex;
-    width: 98%;
-    border: 2px solid black;
-    border-radius: 6px;
-    background: white;
-    height:15vh;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    padding: 5px;
-    flex-shrink:0;
-    align-items: center;
-    /* margin: 0 auto; */
-}
-.cart-item-div img{
-    height:90%;
-    aspect-ratio: 16/9;
-    border: 2px solid red;
-}
+        /* -----------------------------CART DISPLAY SECTION--------------------------------------- */
+        #add-cart-display {
+            width: 94%;
+            height: 88vh;
+            margin: 0 auto;
+            /* border: 1px solid white; */
+            margin-top: 3px;
+            background: rgba(255, 255, 255, 0.156);
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            overflow-y: auto;
+            align-items: center;
+            padding-top: 5px;
+            gap: 4px;
+            padding-bottom: 200px;
 
+        }
+
+        #add-cart-display>h1 {
+            align-self: center;
+        }
+
+        .cart-item-div {
+            display: flex;
+            width: 98%;
+            border: 2px solid black;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.914);
+            height: 15vh;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            padding: 5px;
+            flex-shrink: 0;
+            align-items: center;
+            /* margin: 0 auto; */
+        }
+
+        .cart-item-div img {
+            height: 90%;
+            aspect-ratio: 16/9;
+            border: 2px solid red;
+        }
+
+        .item-segment {
+            padding: 4px 6px;
+            font-size: 0.7rem;
+        }
+
+
+        .isolate-div {
+            margin-left: auto;
+            height: 95%;
+
+        }
+
+        .isolate-div p {
+            /* margin-top: auto; */
+            margin-top: 60%;
+            font-size: 1.3rem;
+            font-weight: 600;
+
+
+        }
+
+        .remove-button:active {
+            background: red;
+            color: yellow;
+
+        }
+
+        .seg-price,
+        .seg-stock,
+        .seg-id {
+            display: none;
+        }
+
+        .span-element {
+            min-width: fit-content;
+            /* background: blue; */
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .span-element button {
+            border: 0.3px solid rgb(194, 162, 162);
+            margin-right: 9px;
+        }
+
+        .span-element button:active {
+            border: 0.3px solid rgb(194, 162, 162);
+            margin-right: 9px;
+            background-color: black;
+            color: yellow;
+        }
+
+        .sub-with {
+            border: 0.3px solid rgb(194, 162, 162);
+            margin-right: 9px;
+            margin-left: 6px;
+        }
+        .proceed-cart-div{
+            position: fixed;
+            bottom:0px;
+            display: flex;
+            width: 100%;
+            height: 10vh;
+            background-color: rgb(255, 255, 255);
+        }
+        .proceed-cart-div h1{
+            border: 1px solid rgb(83, 82, 82);
+            width: fit-content;
+            margin-left:auto;
+            padding:0px 10px;
+            margin-right: 10px;
+            height: max-content;
+            margin-top: 4px;
+        }
+        .proceed-cart-div button{
+            
+           height: max-content;
+           padding:10px 20px;
+           
+           margin-right: 50px;
+           background-color: rgb(200, 198, 0);
+           border-radius: 4px;
+           color: rgb(1, 11, 90);
+           border: 1px solid rgba(185, 186, 155, 0.726);
+           margin-top: 4px;
+           font-size: 1rem;
+           font-weight: 400;
+        }
     </style>
 </head>
+
 <body>
-     <div id="auto-row-container">
+    <div id="auto-row-container">
         <div id="nav">
             <p>Bibl<span id="text-section">yie</span></p>
             <h3>Biblyie knows you're here :)</h3>
         </div>
-      <div id="cart-section">
-          <div id="add-cart-display">
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
+        <div id="cart-section">
+            <div id="add-cart-display">
+
+
+
             </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-            <div class="cart-item-div">
-                <img src="" alt="image">
-                <h1>title</h1>
-                <p>price</p>
-            </div>
-           
         </div>
-      </div>
-    </div>   
+    </div>
 </body>
-    <!-- ------------------------------------------------------------------------------------------------------ -->
-     <script>
-        let bookArray;
-        let currentUser;
-        let rcmndArray;
-        let genToken=localStorage.getItem("genToken")
-        genToken=genToken.trim()
-        
-        
-        // ----------------------------------ADDING ITEMS INTO CART----------------------------------
-       fetch(`http://localhost:3000/loggedUser`)
-       .then(res=>res.json())
-       .then(data=>{
-        const theLoc=data.find((d,i)=>d.id===genToken)
-        currentUser=theLoc.user;
-        return fetch(`http://localhost:3000/payLoadPurchase/${currentUser}`)
-       })
-       .then(res=>res.json())
-       .then(data=>{
-        bookArray=data.cart
-        console.log(bookArray);
-        if(!bookArray||bookArray.length===0){
-            document.querySelector("#add-cart-display").innerHTML=`
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<script>
+    let bookArray;
+    let currentUser;
+    let rcmndArray;
+    let wholePayload;
+    let genToken = localStorage.getItem("genToken")
+    genToken = genToken.trim()
+
+
+    // ----------------------------------ADDING ITEMS INTO CART----------------------------------
+    fetch(`http://localhost:3000/loggedUser`)
+        .then(res => res.json())
+        .then(data => {
+            const theLoc = data.find((d, i) => d.id === genToken)
+            currentUser = theLoc.user;
+            return fetch(`http://localhost:3000/payLoadPurchase/${currentUser}`)
+        })
+        .then(res => res.json())
+        .then(data => {
+            wholePayload = data;
+            bookArray = data.cart
+            console.log(bookArray);
+            if (!bookArray || bookArray.length === 0) {
+                document.querySelector("#add-cart-display").innerHTML = `
              <h1> Your cart is Empty</h1>`;
-             return
-        }
-        return fetch(`http://localhost:3000/bookRcmndd`)
-       })
-       .then(res=>res.json())
-       .then(data=>{
-        rcmndArray=data
-        // console.log(data);
-        //  document.querySelector("#add-cart-display").innerHTML=``;
-        for(let i=0;i<bookArray.length;i++){
-            let fromShelf=rcmndArray.find((d,index)=>{
-                return d.id===bookArray[i].id
+                return
+            }
+            return fetch(`http://localhost:3000/bookRcmndd`)
+        })
+        .then(res => res.json())
+        .then(data => {
+            rcmndArray = data
+            // console.log(data);
+            document.querySelector("#add-cart-display").innerHTML = ``;
+            for (let i = 0; i < bookArray.length; i++) {
+                let fromShelf = rcmndArray.find((d, index) => {
+                    return d.id === bookArray[i].id
+                })
+                console.log(fromShelf)
+                document.querySelector("#add-cart-display").innerHTML += `
+             <div class="cart-item-div">
+                <img src=${fromShelf.imageurl} alt="image">
+                <div class="item-segment">
+                <h1>${fromShelf.title}</h1>
+                <h2>Id: ${fromShelf.id}</h2>
+                <div class="span-element">
+                    <button class="add-with">+</button>
+                    <h3>qty: ${bookArray[i].count}</h3> 
+                    <button class="sub-with">-</button>
+                </div>
+                </div>
+                <p class="seg-price">${fromShelf.currentprice}</p>
+                <p class="seg-id">${fromShelf.id}</p>
+                <p class="seg-stock">${fromShelf.stockcount}</p>
+                <div class="isolate-div">
+                    <button class="remove-button">Remove</button>
+                    <p>rs. ${fromShelf.currentprice}</p>
+                </div>
+            </div>
+             `;
+             
+            }
+            let proceedCart= document.createElement("div")
+            document.querySelector("#add-cart-display").appendChild(proceedCart);
+            proceedCart.classList.add("proceed-cart-div")
+            proceedCart.innerHTML=`
+            <h1>Total : <span>200</span></h1>
+            <button class="proceed-now"> Proceed</button>`
+
+        })
+        .catch(error => console.log(error))
+    if (true) {
+        document.querySelector("#add-cart-display").addEventListener("click", (e) => {
+            if (!e.target.closest(".remove-button")) return
+            console.log(e.target.closest(".cart-item-div"))
+            let currentParent = e.target.closest(".cart-item-div")
+            let segId = currentParent.querySelector(".seg-id").textContent
+            if (!currentUser) return
+            console.log(currentUser);
+            // console.log(bookArray)
+            let iHere;
+            bookArray.some((item, i) => {
+                iHere = i;
+                return item.id === segId
+
             })
-            // console.log(fromShelf)
-            //  document.querySelector("#add-cart-display").innerHTML+=`
-            //  `
+            // console.log(iHere)
+
+            bookArray.splice(iHere, 1)
+            console.log(wholePayload)
+
+            fetch(`http://localhost:3000/payLoadPurchase/${currentUser}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(wholePayload)
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
+                .catch(error => console.log(error))
+
+
+        })
+
+
+    }
+
+    function putPayload() {
+        fetch(`http://localhost:3000/payLoadPurchase/${currentUser}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(wholePayload)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.log(error))
+    }
+    function editCount(id, choice) {
+        let bookArrayC = bookArray.find((item, i) => {
+            return item.id === id
+        })
+        if (bookArrayC.count == 20) {
+            if (choice === "add") {
+                console.log("count cant be over 20");
+                return false;
+
+            }
         }
-        
-       })
-       .catch(error=>console.log(error))
-        
-     </script>
+        else if (bookArrayC.count == 1) {
+            if (choice === "sub") {
+                console.log("count cant be below 0");
+                return false;
+            }
+        }
+        if (choice === "add") {
+            bookArrayC.count = Number(bookArrayC.count) + 1;
+            console.log(wholePayload)
+            return true
+        }
+        else if (choice === "sub") {
+            bookArrayC.count = Number(bookArrayC.count) - 1;
+            console.log(wholePayload)
+            return true
+
+        }
+        else {
+            return false
+        }
+    }
+
+    document.addEventListener("click", (e) => {
+        let check;
+        if (e.target.closest(".add-with")) {
+            let currentParent = e.target.closest(".cart-item-div")
+            let segId = currentParent.querySelector(".seg-id").textContent;
+            console.log(segId);
+            check = editCount(segId, "add")
+
+        }
+        else if (e.target.closest(".sub-with")) {
+            let currentParent = e.target.closest(".cart-item-div")
+            let segId = currentParent.querySelector(".seg-id").textContent;
+            console.log(segId);
+            check = editCount(segId, "sub")
+        }
+        if (check) {
+            putPayload();
+        }
+
+    })
+
+
+</script>
+
 </html>
