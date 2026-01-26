@@ -115,9 +115,9 @@
         .cart-item-div {
             display: flex;
             width: 98%;
-            border: 2px solid black;
+            border: 2px solid rgb(149, 0, 0);
             border-radius: 6px;
-            background: rgba(255, 255, 255, 0.914);
+            background: rgba(233, 167, 167, 0.988);
             height: 15vh;
             flex-wrap: nowrap;
             overflow: hidden;
@@ -153,7 +153,12 @@
 
 
         }
-
+        .remove-button{
+            background: rgb(158, 5, 5);
+            color: white; 
+            border-radius: 4px;
+            border: 1px solid rgb(255, 94, 0);
+        }
         .remove-button:active {
             background: red;
             color: yellow;
@@ -196,7 +201,7 @@
             display: flex;
             width: 100%;
             height: 10vh;
-            background-color: rgb(255, 255, 255);
+            background-color: rgba(249, 249, 249, 0.993);
         }
         .proceed-cart-div h1{
             border: 1px solid rgb(83, 82, 82);
@@ -206,6 +211,8 @@
             margin-right: 10px;
             height: max-content;
             margin-top: 4px;
+            font-weight: 600;
+            color: indigo;
         }
         .proceed-cart-div button{
             
@@ -219,7 +226,10 @@
            border: 1px solid rgba(185, 186, 155, 0.726);
            margin-top: 4px;
            font-size: 1rem;
-           font-weight: 400;
+           font-weight:400;
+        }
+        .priceSpan{
+            color: rgb(85, 0, 0) ;
         }
     </style>
 </head>
@@ -245,6 +255,7 @@
     let currentUser;
     let rcmndArray;
     let wholePayload;
+    let priceCount=[];
     let genToken = localStorage.getItem("genToken")
     genToken = genToken.trim()
 
@@ -278,7 +289,15 @@
                 let fromShelf = rcmndArray.find((d, index) => {
                     return d.id === bookArray[i].id
                 })
-                console.log(fromShelf)
+                let cObj={id:bookArray[i].id,
+                    stock:fromShelf.stockcount,
+                    count:bookArray[i].count,
+                    price:fromShelf.currentprice
+                }
+                priceCount.push(cObj)
+                // console.log(cObj)
+                // console.log(priceCount)
+                // console.log(fromShelf)
                 document.querySelector("#add-cart-display").innerHTML += `
              <div class="cart-item-div">
                 <img src=${fromShelf.imageurl} alt="image">
@@ -306,9 +325,20 @@
             document.querySelector("#add-cart-display").appendChild(proceedCart);
             proceedCart.classList.add("proceed-cart-div")
             proceedCart.innerHTML=`
-            <h1>Total : <span>200</span></h1>
+            <h1>Amount : <span class="priceSpan"></span> rs.</h1>
             <button class="proceed-now"> Proceed</button>`
 
+            return true
+
+        })
+        .then(flag=>{
+            let sum=0;
+             for(let i=0;i<priceCount.length;i++){
+                
+                (priceCount[i].stock==0||priceCount[i].stock>priceCount.count)?sum=sum:sum+=priceCount[i].count*priceCount[i].price;
+                
+            }
+           document.querySelector(".priceSpan").innerHTML=`${sum}`
         })
         .catch(error => console.log(error))
     if (true) {
@@ -409,6 +439,7 @@
         }
 
     })
+
 
 
 </script>
