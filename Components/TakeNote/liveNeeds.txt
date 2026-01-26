@@ -58,3 +58,9 @@ _________________________
       "allOrders": []
     }
   ]
+
+
+ let outer =document.createElement("div")
+                outer.classList.add("stock-alert")
+                selectorArray[i].appendChild(outer)
+                selectorArray[i].classList.add("highlight-btn")

@@ -124,7 +124,64 @@
             padding: 5px;
             flex-shrink: 0;
             align-items: center;
+            position: relative;
             /* margin: 0 auto; */
+        }
+
+        .stock-alert {
+            position: absolute;
+            background: rgba(60, 63, 65, 0.59);
+            display: flex;
+            width: 100%;
+            /* display: block; */
+            height: 100%;
+            inset: 0;
+            gap: 4px;
+        }
+
+        .stock-alert h1 {
+            width: fit-content;
+            padding: 2px 10px;
+            /* margin:0 auto; */
+            margin-left: 50%;
+            transform: translateX(-50%);
+
+        }
+
+        .stock-alert button {
+            height: 100%;
+            align-self: center;
+            min-width: 100px;
+            background: rgba(138, 120, 255, 0.716);
+            background: rgba(233, 167, 167, 0.579);
+
+            font-weight: 600;
+            color: rgb(0, 13, 146);
+            border-color: rgb(226, 43, 104);
+            border-color: none;
+            border-radius: 6px;
+            vertical-align: middle;
+
+        }
+
+        .stock-alert button:hover {
+            background: rgba(138, 120, 255, 0.716);
+            color: black;
+
+
+        }
+
+        .stock-alert button:active {
+            background: rgba(41, 40, 31, 0.716);
+            color: rgb(208, 255, 0);
+
+
+        }
+
+        .stock-alert>div {
+            margin-left: auto;
+            display: inline;
+            /* vertical-align: middle; */
         }
 
         .cart-item-div img {
@@ -153,12 +210,14 @@
 
 
         }
-        .remove-button{
+
+        .remove-button {
             background: rgb(158, 5, 5);
-            color: white; 
+            color: white;
             border-radius: 4px;
             border: 1px solid rgb(255, 94, 0);
         }
+
         .remove-button:active {
             background: red;
             color: yellow;
@@ -195,41 +254,45 @@
             margin-right: 9px;
             margin-left: 6px;
         }
-        .proceed-cart-div{
+
+        .proceed-cart-div {
             position: fixed;
-            bottom:0px;
+            bottom: 0px;
             display: flex;
             width: 100%;
             height: 10vh;
             background-color: rgba(249, 249, 249, 0.993);
         }
-        .proceed-cart-div h1{
+
+        .proceed-cart-div h1 {
             border: 1px solid rgb(83, 82, 82);
             width: fit-content;
-            margin-left:auto;
-            padding:0px 10px;
+            margin-left: auto;
+            padding: 0px 10px;
             margin-right: 10px;
             height: max-content;
             margin-top: 4px;
             font-weight: 600;
             color: indigo;
         }
-        .proceed-cart-div button{
-            
-           height: max-content;
-           padding:10px 20px;
-           
-           margin-right: 50px;
-           background-color: rgb(200, 198, 0);
-           border-radius: 4px;
-           color: rgb(1, 11, 90);
-           border: 1px solid rgba(185, 186, 155, 0.726);
-           margin-top: 4px;
-           font-size: 1rem;
-           font-weight:400;
+
+        .proceed-cart-div button {
+
+            height: max-content;
+            padding: 10px 20px;
+
+            margin-right: 50px;
+            background-color: rgb(200, 198, 0);
+            border-radius: 4px;
+            color: rgb(1, 11, 90);
+            border: 1px solid rgba(185, 186, 155, 0.726);
+            margin-top: 4px;
+            font-size: 1rem;
+            font-weight: 400;
         }
-        .priceSpan{
-            color: rgb(85, 0, 0) ;
+
+        .priceSpan {
+            color: rgb(85, 0, 0);
         }
     </style>
 </head>
@@ -255,7 +318,7 @@
     let currentUser;
     let rcmndArray;
     let wholePayload;
-    let priceCount=[];
+    let priceCount = [];
     let genToken = localStorage.getItem("genToken")
     genToken = genToken.trim()
 
@@ -289,10 +352,11 @@
                 let fromShelf = rcmndArray.find((d, index) => {
                     return d.id === bookArray[i].id
                 })
-                let cObj={id:bookArray[i].id,
-                    stock:fromShelf.stockcount,
-                    count:bookArray[i].count,
-                    price:fromShelf.currentprice
+                let cObj = {
+                    id: bookArray[i].id,
+                    stock: fromShelf.stockcount,
+                    count: bookArray[i].count,
+                    price: fromShelf.currentprice
                 }
                 priceCount.push(cObj)
                 // console.log(cObj)
@@ -319,30 +383,67 @@
                 </div>
             </div>
              `;
-             
+
             }
-            let proceedCart= document.createElement("div")
+            let proceedCart = document.createElement("div")
             document.querySelector("#add-cart-display").appendChild(proceedCart);
             proceedCart.classList.add("proceed-cart-div")
-            proceedCart.innerHTML=`
+            proceedCart.innerHTML = `
             <h1>Amount : <span class="priceSpan"></span> rs.</h1>
             <button class="proceed-now"> Proceed</button>`
 
             return true
 
         })
-        .then(flag=>{
-            let sum=0;
-             for(let i=0;i<priceCount.length;i++){
-                
-                (priceCount[i].stock==0||priceCount[i].stock>priceCount.count)?sum=sum:sum+=priceCount[i].count*priceCount[i].price;
-                
+        .then(flag => {
+            let sum = 0;
+            let selectorArray = document.querySelectorAll(".cart-item-div");
+            console.log(selectorArray)
+            for (let i = 0; i < priceCount.length; i++) {
+
+
+                (priceCount[i].stock == 0 || priceCount[i].stock < priceCount[i].count) ? sum = sum : sum += priceCount[i].count * priceCount[i].price;
+
+
+                console.log(priceCount[i].stock == 0 || priceCount[i].stock > priceCount[i].count);
+                console.log(priceCount[i].stock > priceCount[i].count, priceCount[i].stock, priceCount[i].count);
+                console.log(typeof (priceCount[i].count), typeof (priceCount[i].stock));
+
+
+                if (priceCount[i].stock == 0 || priceCount[i].stock < priceCount[i].count) {
+                    if (priceCount[i].stock == 0) {
+                        let outer = document.createElement("div")
+                        outer.classList.add("stock-alert")
+                        selectorArray[i].appendChild(outer)
+                        selectorArray[i].classList.add("highlight-btn")
+                        outer.innerHTML = `<h1>out of stock</h1>
+                    <div class="button-holder">
+                    <button class="stock-remove">Remove</button>
+                        </div> `
+
+                    }
+                    else if (priceCount[i].stock < priceCount[i].count) {
+
+                        let outer = document.createElement("div")
+                        outer.classList.add("stock-alert")
+                        selectorArray[i].appendChild(outer)
+                        selectorArray[i].classList.add("highlight-btn")
+                        outer.innerHTML = `<h1>out of stock</h1>
+                    <div class="button-holder">
+                    <button class="stock-reset">Reset</button>
+                    <button class="stock-remove">Remove</button>
+                        </div> `
+
+                    }
+                }
+
             }
-           document.querySelector(".priceSpan").innerHTML=`${sum}`
+            document.querySelector(".priceSpan").innerHTML = `${sum}`
         })
         .catch(error => console.log(error))
     if (true) {
-        document.querySelector("#add-cart-display").addEventListener("click", (e) => {
+        //.querySelector("#add-cart-display") REMOVED-------------------------------------------------------------
+        document.addEventListener("click", (e) => {
             if (!e.target.closest(".remove-button")) return
             console.log(e.target.closest(".cart-item-div"))
             let currentParent = e.target.closest(".cart-item-div")
@@ -434,13 +535,55 @@
             console.log(segId);
             check = editCount(segId, "sub")
         }
+        else if (e.target.closest(".stock-remove")) {
+            let currentParent = e.target.closest(".cart-item-div")
+            let shareId = currentParent.querySelector(".seg-id").textContent
+            check = cartRemove(shareId)
+
+
+
+        }
+        else if (e.target.closest(".stock-reset")) {
+            let currentParent = e.target.closest(".cart-item-div")
+            let shareId = currentParent.querySelector(".seg-id").textContent
+            check = countReset(shareId)
+
+
+
+        }
         if (check) {
             putPayload();
         }
 
     })
 
+    function cartRemove(id) {
+        let indexHere;
+        let arrayHere = bookArray.some((item, i) => {
+            indexHere = i
 
+            return id == item.id
+        })
+        if (arrayHere) {
+            bookArray.splice(indexHere, 1)
+            return true
+
+        }
+    }
+    function countReset(id) {
+        let indexHere;
+        let arrayHere = bookArray.some((item, i) => {
+            indexHere = i
+
+            return id == item.id
+        })
+        if (arrayHere) {
+            bookArray[i].count = 1;
+            console.log(bookArray[i].count)
+            return true
+
+        }
+    }
 
 </script>
 
